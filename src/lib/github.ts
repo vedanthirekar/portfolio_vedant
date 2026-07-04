@@ -31,6 +31,14 @@ function headers(): HeadersInit {
   return h;
 }
 
+/** Surfaces GitHub API failures in server/Vercel function logs instead of failing silently. */
+function logApiFailure(what: string, res: Response) {
+  const remaining = res.headers.get("x-ratelimit-remaining");
+  console.warn(
+    `[github] ${what} failed: ${res.status}${remaining === "0" ? " (rate limit exhausted — set GITHUB_TOKEN)" : ""}`,
+  );
+}
+
 /** Latest CI run for this site's repo, or null if unavailable (no repo yet, rate limit, …). */
 export async function fetchLatestRun(): Promise<WorkflowRun | null> {
   try {
@@ -38,7 +46,10 @@ export async function fetchLatestRun(): Promise<WorkflowRun | null> {
       `${API}/repos/${site.repo}/actions/runs?per_page=1&branch=main`,
       { headers: headers(), next: { revalidate: 300 } },
     );
-    if (!res.ok) return null;
+    if (!res.ok) {
+      logApiFailure("latest run", res);
+      return null;
+    }
     const data = await res.json();
     const run = data.workflow_runs?.[0];
     if (!run) return null;
@@ -110,7 +121,10 @@ export async function fetchUserActivity(): Promise<ActivityEvent[] | null> {
       `${API}/users/${username}/events/public?per_page=30`,
       { headers: headers(), next: { revalidate: 900 } },
     );
-    if (!res.ok) return null;
+    if (!res.ok) {
+      logApiFailure("user activity", res);
+      return null;
+    }
     const data = await res.json();
     if (!Array.isArray(data)) return null;
     return mapGithubEvents(data);
@@ -126,7 +140,10 @@ export async function fetchCommits(): Promise<Commit[] | null> {
       headers: headers(),
       next: { revalidate: 3600 },
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      logApiFailure("commits", res);
+      return null;
+    }
     const data = await res.json();
     if (!Array.isArray(data)) return null;
     return data.map((c) => ({
