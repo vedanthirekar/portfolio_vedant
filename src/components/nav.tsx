@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 
 const links = [
   { href: "/work", label: "work" },
+  { href: "/now", label: "now" },
   { href: "/about", label: "about" },
   { href: "/changelog", label: "changelog" },
   { href: "/roadmap", label: "roadmap" },

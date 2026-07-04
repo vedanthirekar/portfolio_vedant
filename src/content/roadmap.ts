@@ -6,7 +6,13 @@ export const roadmap: RoadmapItem[] = [
   {
     title: "v1 — The observable portfolio",
     detail:
-      "Editorial site with a real CI/CD pipeline, live ops panel, changelog, architecture docs, and a public JSON API.",
+      "Control-room home with a real CI/CD pipeline, live ops panel, changelog, architecture docs, and a public JSON API.",
+    status: "in-progress",
+  },
+  {
+    title: "Now page + live GitHub activity",
+    detail:
+      "A dated personal log of what I'm building and learning, backed by my real-time public GitHub activity feed.",
     status: "in-progress",
   },
   {

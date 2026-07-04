@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { projects } from "@/content/projects";
+import { projectImage } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -20,10 +22,23 @@ export default function WorkPage() {
       </p>
 
       <div className="mt-16 divide-y divide-line border-y border-line">
-        {projects.map((p) => (
+        {projects.map((p) => {
+          const img = projectImage(p.slug);
+          return (
           <article key={p.slug} className="grid gap-6 py-12 lg:grid-cols-[1fr_2fr] lg:gap-12">
             <div>
               <h2 className="font-serif text-3xl tracking-tight">{p.name}</h2>
+              {img && (
+                <div className="relative mt-4 aspect-video overflow-hidden rounded-md border border-line">
+                  <Image
+                    src={img}
+                    alt={`${p.name} screenshot`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <p className="mt-3 font-mono text-[11px] text-muted">
                 {p.stack.join(" · ")}
               </p>
@@ -56,7 +71,8 @@ export default function WorkPage() {
               </div>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { education } from "@/content/education";
 import { achievements } from "@/content/achievements";
+import { aboutPhoto } from "@/lib/images";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -25,13 +28,27 @@ const forte = [
 ];
 
 export default function AboutPage() {
+  const photo = aboutPhoto();
   return (
     <div className="py-16 sm:py-24">
       <p className="label mb-6">About</p>
-      <h1 className="max-w-2xl font-serif text-4xl tracking-tight sm:text-5xl">
-        Curious about how complex things{" "}
-        <em className="text-muted">break down into simple parts.</em>
-      </h1>
+      <div className="grid gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16">
+        <h1 className="max-w-2xl font-serif text-4xl tracking-tight sm:text-5xl">
+          Curious about how complex things{" "}
+          <em className="text-muted">break down into simple parts.</em>
+        </h1>
+        {photo && (
+          <div className="relative aspect-square max-w-72 overflow-hidden rounded-lg border border-line">
+            <Image
+              src={photo}
+              alt={site.name}
+              fill
+              sizes="(min-width: 1024px) 25vw, 60vw"
+              className="object-cover"
+            />
+          </div>
+        )}
+      </div>
 
       <div className="mt-10 max-w-2xl space-y-5 leading-relaxed text-muted">
         <p>
@@ -58,7 +75,12 @@ export default function AboutPage() {
             how this site works
           </Link>{" "}
           shows the engineering standards I hold myself to — on my own time,
-          when nobody&apos;s checking.
+          when nobody&apos;s checking. And if you want to know what&apos;s up with me
+          right now, that&apos;s literally{" "}
+          <Link href="/now" className="link">
+            a page
+          </Link>
+          .
         </p>
       </div>
 

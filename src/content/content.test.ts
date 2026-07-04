@@ -4,6 +4,7 @@ import { experience } from "./experience";
 import { education } from "./education";
 import { achievements } from "./achievements";
 import { roadmap } from "./roadmap";
+import { nowUpdates } from "./now";
 
 const YM = /^\d{4}-(0[1-9]|1[0-2])$/;
 
@@ -66,6 +67,28 @@ describe("education and achievements", () => {
     for (const a of achievements) {
       expect(a.year).toBeGreaterThan(2000);
       expect(a.detail.length).toBeGreaterThan(20);
+    }
+  });
+});
+
+describe("now updates", () => {
+  it("use valid YYYY-MM-DD dates, sorted newest first", () => {
+    for (const u of nowUpdates) {
+      expect(u.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Number.isNaN(new Date(u.date).getTime())).toBe(false);
+    }
+    const dates = nowUpdates.map((u) => u.date);
+    expect(dates).toEqual([...dates].sort().reverse());
+  });
+
+  it("every update has labeled, non-empty entries", () => {
+    expect(nowUpdates.length).toBeGreaterThan(0);
+    for (const u of nowUpdates) {
+      expect(u.entries.length).toBeGreaterThan(0);
+      for (const e of u.entries) {
+        expect(e.label.length).toBeGreaterThan(0);
+        expect(e.text.length).toBeGreaterThan(10);
+      }
     }
   });
 });

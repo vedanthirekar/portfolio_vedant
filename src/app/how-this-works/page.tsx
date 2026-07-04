@@ -38,12 +38,21 @@ export default function HowThisWorksPage() {
       <h1 className="max-w-2xl font-serif text-4xl tracking-tight sm:text-5xl">
         A portfolio that <em className="text-muted">shows its work.</em>
       </h1>
-      <p className="mt-6 max-w-xl leading-relaxed text-muted">
-        In plain terms: this site publishes its own build pipeline, changelog,
-        and architecture — the same practices I use in professional work,
-        demonstrated live instead of listed on a resume. This page is its
-        design doc.
-      </p>
+      <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-muted">
+        <p>
+          Here&apos;s the problem with resumes: anyone can write &quot;CI/CD, automated
+          testing, documentation, clean architecture&quot; on one. The words are
+          free. So instead of asking you to take my word for it, I built this
+          site to run those practices live, where you can check them.
+        </p>
+        <p>
+          If you&apos;re deciding whether I can build reliable software —
+          don&apos;t trust this page, audit it. The pipeline status in the footer
+          is real. The changelog is my actual git history. The test count was
+          written by CI into the exact deployment you&apos;re reading. This page is
+          the design doc for all of it.
+        </p>
+      </div>
 
       {/* Pipeline */}
       <section className="mt-20">

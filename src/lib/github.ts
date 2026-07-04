@@ -59,6 +59,66 @@ export async function fetchLatestRun(): Promise<WorkflowRun | null> {
   }
 }
 
+export interface ActivityEvent {
+  verb: string; // "pushed 3 commits to", "opened a PR in", "created"
+  repo: string; // "vedanthirekar/dsa-solutions"
+  detail: string; // latest commit message / PR title / ""
+  date: string;
+  url: string;
+}
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/** Pure mapper over GitHub public-events payloads — kept separate for testing. */
+export function mapGithubEvents(raw: any[]): ActivityEvent[] {
+  const events: ActivityEvent[] = [];
+  for (const e of raw) {
+    const repo = e?.repo?.name ?? "";
+    const date = e?.created_at ?? "";
+    if (!repo || !date) continue;
+    const url = `https://github.com/${repo}`;
+    if (e.type === "PushEvent") {
+      const commits = e.payload?.commits ?? [];
+      if (commits.length === 0) continue;
+      events.push({
+        verb: `pushed ${commits.length} commit${commits.length === 1 ? "" : "s"} to`,
+        repo,
+        detail: String(commits[commits.length - 1]?.message ?? "").split("\n")[0],
+        date,
+        url,
+      });
+    } else if (e.type === "PullRequestEvent" && e.payload?.action === "opened") {
+      events.push({
+        verb: "opened a pull request in",
+        repo,
+        detail: e.payload?.pull_request?.title ?? "",
+        date,
+        url: e.payload?.pull_request?.html_url ?? url,
+      });
+    } else if (e.type === "CreateEvent" && e.payload?.ref_type === "repository") {
+      events.push({ verb: "created", repo, detail: "", date, url });
+    }
+  }
+  return events;
+}
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+/** Recent public activity across all of the user's repos, or null if unavailable. */
+export async function fetchUserActivity(): Promise<ActivityEvent[] | null> {
+  const username = site.social.github.split("/").pop();
+  try {
+    const res = await fetch(
+      `${API}/users/${username}/events/public?per_page=30`,
+      { headers: headers(), next: { revalidate: 900 } },
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data)) return null;
+    return mapGithubEvents(data);
+  } catch {
+    return null;
+  }
+}
+
 /** Recent commits on main, or null if unavailable. */
 export async function fetchCommits(): Promise<Commit[] | null> {
   try {

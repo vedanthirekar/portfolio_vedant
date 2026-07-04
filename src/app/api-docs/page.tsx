@@ -32,11 +32,24 @@ export default function ApiDocsPage() {
       <h1 className="max-w-2xl font-serif text-4xl tracking-tight sm:text-5xl">
         This portfolio has <em className="text-muted">an API.</em>
       </h1>
-      <p className="mt-6 max-w-xl leading-relaxed text-muted">
-        In plain terms: everything on this site is also available as machine-readable
-        data, documented like a real product. If you&apos;re building a tool, scraping
-        for a hiring pipeline, or just curious — don&apos;t parse my HTML, use this.
-      </p>
+      <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-muted">
+        <p>
+          In plain terms: everything on this site is also available as machine-readable
+          data, documented like a real product. If you&apos;re building a tool, scraping
+          for a hiring pipeline, or just curious — don&apos;t parse my HTML, use this.
+        </p>
+        <p>
+          Why does a portfolio need an API? Partly because treating your own
+          data as a product is good engineering practice in miniature — typed
+          content, one source of truth, documented contract. And partly because
+          upcoming features on the{" "}
+          <a href="/roadmap" className="link">
+            roadmap
+          </a>{" "}
+          (like the <span className="font-mono text-xs">npx vedant</span> terminal
+          resume card) will be real consumers of these endpoints.
+        </p>
+      </div>
 
       <div className="mt-16 space-y-10">
         {endpoints.map((e) => (

@@ -37,6 +37,11 @@ export interface Achievement {
   year: number;
 }
 
+export interface NowUpdate {
+  date: string; // "YYYY-MM-DD"
+  entries: { label: string; text: string }[];
+}
+
 export type RoadmapStatus = "shipped" | "in-progress" | "planned";
 
 export interface RoadmapItem {
