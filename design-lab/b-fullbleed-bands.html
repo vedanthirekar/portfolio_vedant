@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Option B — Full-bleed Bands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #ece7e1;
+    --white: #f7f5f2;
+    --mist: #dfe5e2;      /* sage tint band */
+    --pale: #d5dad6;
+    --ink: #25231e;
+    --muted: #6e6961;
+    --line: #cfd0c9;
+    --sage: #8aa2a0;
+    --sage-deep: #5f7975;
+    --rose: #d6a495;
+    --panel: #232826;
+    --panel-ink: #d8d5cc;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .band { padding-left: 5vw; padding-right: 5vw; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+  .label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  a { color: inherit; }
+
+  nav { display: flex; justify-content: space-between; align-items: baseline; padding: 26px 5vw; border-bottom: 1px solid var(--line); }
+  nav .links { display: flex; gap: 26px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+  nav .links a { text-decoration: none; }
+  nav .links a:hover { color: var(--sage-deep); }
+  .brand { font-weight: 600; text-decoration: none; }
+
+  /* hero band — type IS the design */
+  .hero { padding-top: 11vh; padding-bottom: 10vh; }
+  .hero h1 { font-family: Newsreader, serif; font-weight: 300; font-size: clamp(52px, 7.2vw, 118px); line-height: 1.0; letter-spacing: -0.02em; max-width: 18ch; }
+  .hero h1 em { color: var(--sage-deep); }
+  .hero .row { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-top: 6vh; flex-wrap: wrap; }
+  .hero .sub { max-width: 460px; font-size: 17px; line-height: 1.65; color: var(--muted); }
+  .cta { display: flex; gap: 14px; align-items: center; }
+  .btn { padding: 13px 30px; border-radius: 999px; font-size: 14px; font-weight: 500; text-decoration: none; }
+  .btn.solid { background: var(--ink); color: var(--cream); }
+  .btn.ghost { border: 1px solid var(--ink); }
+  .btn.ghost:hover { background: var(--sage); border-color: var(--sage); color: #fff; }
+
+  /* ticker band */
+  .ticker { background: var(--mist); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; gap: 14px; align-items: center; padding-top: 13px; padding-bottom: 13px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink); white-space: nowrap; overflow: hidden; }
+  .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--rose); flex: none; }
+  .ticker .dim { color: var(--muted); }
+
+  /* work band — big rows, no cards */
+  .work { background: var(--white); padding-top: 80px; padding-bottom: 80px; }
+  .work-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+  .rowitem { display: grid; grid-template-columns: 90px 1fr 380px 260px; gap: 40px; align-items: center; padding: 34px 0; border-top: 1px solid var(--line); text-decoration: none; }
+  .rowitem:last-of-type { border-bottom: 1px solid var(--line); }
+  .rowitem .idx { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+  .rowitem h3 { font-family: Newsreader, serif; font-weight: 400; font-size: clamp(30px, 3vw, 46px); letter-spacing: -0.015em; transition: color .15s; }
+  .rowitem:hover h3 { color: var(--sage-deep); font-style: italic; }
+  .rowitem p { font-size: 14px; line-height: 1.6; color: var(--muted); }
+  .rowitem .thumb { aspect-ratio: 16/9; border-radius: 6px; }
+  .t1 { background: linear-gradient(150deg, #b8c3bd, #8aa2a0); }
+  .t2 { background: linear-gradient(150deg, #e3cdc4, #d6a495); }
+  .t3 { background: linear-gradient(150deg, #dfe0dc, #c3c9c3); }
+  .rowitem .stack { display:block; margin-top: 10px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--sage-deep); }
+
+  /* experience band — one line */
+  .exp { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 30px; }
+  .exp .roles { display: flex; gap: 40px; flex-wrap: wrap; font-size: 15px; }
+  .exp .roles i { font-style: normal; color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; margin-left: 8px; }
+
+  /* ops band — full-bleed dark */
+  .ops { background: var(--panel); color: var(--panel-ink); display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding-top: 20px; padding-bottom: 20px; font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  .ops .ok { width: 8px; height: 8px; border-radius: 999px; background: #7fb89a; }
+  .ops .sep { color: #5b615c; }
+  .ops .tests { color: #9fc3ae; }
+  .ops a { color: #9aa39e; text-decoration: none; margin-left: auto; }
+  .ops a:hover { color: #fff; }
+  .ops-note { background: var(--panel); color: #8a867c; padding-bottom: 26px; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .ops-note a { color: var(--sage); }
+
+  @media (max-width: 1000px) {
+    .rowitem { grid-template-columns: 40px 1fr; }
+    .rowitem .thumb, .rowitem p.desc-col { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#">Vedant Hirekar</a>
+  <div class="links">
+    <a href="#">work</a><a href="#">now</a><a href="#">about</a><a href="#">changelog</a><a href="#">roadmap</a><a href="#">how this works</a><a href="#">api</a>
+  </div>
+</nav>
+
+<header class="band hero">
+  <p class="label" style="margin-bottom:4vh">AI &amp; Software Engineer · Bloomington, Indiana</p>
+  <h1>I learn how software &amp; AI systems work <em>by building them.</em></h1>
+  <div class="row">
+    <p class="sub">Fundamentals, simplicity, and real-world use. M.S. in Data Science at Indiana University — previously at Methix, Parallel Wireless, and Krios Info Solutions.</p>
+    <div class="cta">
+      <a class="btn solid" href="#">Resume</a>
+      <a class="btn ghost" href="#">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<div class="band ticker">
+  <span class="dot"></span>
+  <span>now — building this site · learning multi-agent RL</span>
+  <span class="dim">|</span>
+  <span class="dim">10m ago pushed to vedanthirekar/portfolio_vedant</span>
+  <span class="dim">|</span>
+  <span class="dim">8h ago pushed to vedanthirekar/DSA</span>
+</div>
+
+<section class="band work">
+  <div class="work-head">
+    <p class="label">Selected work</p>
+    <a class="mono" style="font-size:12px;color:var(--sage-deep)" href="#">all projects →</a>
+  </div>
+
+  <a class="rowitem" href="#">
+    <span class="idx">01</span>
+    <h3>Yanck</h3>
+    <p class="desc-col">No-code AI assistant builder for resource-constrained SMBs.<span class="stack">Agentic AI · LangChain · RAG</span></p>
+    <div class="thumb t1"></div>
+  </a>
+  <a class="rowitem" href="#">
+    <span class="idx">02</span>
+    <h3>SOFI 2035</h3>
+    <p class="desc-col">Interactive global-futures dashboard built for The Millennium Project.<span class="stack">Plotly · Python · Data Viz</span></p>
+    <div class="thumb t2"></div>
+  </a>
+  <a class="rowitem" href="#">
+    <span class="idx">03</span>
+    <h3>Healthcare Pipeline</h3>
+    <p class="desc-col">Automated ETL turning FHIR patient bundles into analytics-ready data.<span class="stack">Airflow · PySpark · FHIR</span></p>
+    <div class="thumb t3"></div>
+  </a>
+</section>
+
+<div class="band exp">
+  <p class="label">Experience</p>
+  <div class="roles">
+    <span><b>Methix</b><i>2025</i></span>
+    <span><b>Parallel Wireless</b><i>2024</i></span>
+    <span><b>Krios Info Solutions</b><i>2023</i></span>
+  </div>
+  <a class="mono" style="font-size:12px;color:var(--sage-deep)" href="#">full history →</a>
+</div>
+
+<div class="band ops">
+  <span class="ok"></span>
+  <span>deploy #3</span><span class="sep">·</span>
+  <span>1f4be5d</span><span class="sep">·</span>
+  <span>2m 04s</span><span class="sep">·</span>
+  <span class="tests">35/35 tests ✓</span>
+  <a href="#">how this works →</a>
+</div>
+<div class="band ops-note">Every engineering practice on my resume runs live on this site — <a href="#">audit it yourself</a>.</div>
+
+</body>
+</html>
