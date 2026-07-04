@@ -18,6 +18,21 @@ export const experience: Experience[] = [
     stack: ["LLMs", "HPC", "Slurm", "Mistral-7B", "Python"],
   },
   {
+    slug: "math-tutor",
+    company: "Indiana University",
+    role: "Mathematics Tutor",
+    start: "2026-01",
+    end: "2026-05",
+    summary:
+      "Tutored undergraduate students in mathematics — breaking dense concepts into simple, workable steps, one student at a time.",
+    tagline: "Teaching math, one concept at a time",
+    highlights: [
+      "Tutored undergraduates across core mathematics courses, adapting explanations to each student's way of thinking rather than repeating the lecture.",
+      "The same skill this site is built on: taking something complex and making it feel simple.",
+    ],
+    stack: ["Calculus", "Statistics", "Problem Solving"],
+  },
+  {
     slug: "ai-cybersecurity-research",
     company: "Indiana University",
     role: "Research Assistant — AI in Cybersecurity",
