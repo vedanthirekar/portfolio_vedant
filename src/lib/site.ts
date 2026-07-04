@@ -12,6 +12,6 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/vedanthirekar",
   },
   /** GitHub repo that builds and deploys this site, as "owner/name". */
-  repo: process.env.NEXT_PUBLIC_SITE_REPO ?? "vedanthirekar/portfolio3.0",
+  repo: process.env.NEXT_PUBLIC_SITE_REPO ?? "vedanthirekar/portfolio_vedant",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vedanthirekar.netlify.app",
 } as const;
