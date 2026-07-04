@@ -6,6 +6,7 @@ import type { NowUpdate } from "./types";
 export const nowUpdates: NowUpdate[] = [
   {
     date: "2026-07-04",
+    summary: "building this site · learning multi-agent RL",
     entries: [
       {
         label: "building",

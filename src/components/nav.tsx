@@ -2,9 +2,9 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 const links = [
+  { href: "/about", label: "about" },
   { href: "/work", label: "work" },
   { href: "/now", label: "now" },
-  { href: "/about", label: "about" },
   { href: "/changelog", label: "changelog" },
   { href: "/roadmap", label: "roadmap" },
   { href: "/how-this-works", label: "how this works" },
@@ -14,7 +14,7 @@ const links = [
 export function Nav() {
   return (
     <header className="border-b border-line">
-      <nav className="mx-auto flex max-w-5xl flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-6 py-5">
+      <nav className="mx-auto flex max-w-[1360px] flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-6 py-5 sm:px-12">
         <Link href="/" className="font-medium tracking-tight">
           {site.name}
         </Link>

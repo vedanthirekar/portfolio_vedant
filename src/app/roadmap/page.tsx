@@ -30,7 +30,7 @@ function StatusDot({ status }: { status: RoadmapStatus }) {
     status === "shipped"
       ? "bg-ok"
       : status === "in-progress"
-        ? "bg-amber-400"
+        ? "bg-rose"
         : "bg-line";
   return <span className={`mt-2 inline-block size-2 shrink-0 rounded-full ${color}`} />;
 }

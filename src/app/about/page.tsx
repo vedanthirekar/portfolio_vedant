@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { education } from "@/content/education";
 import { achievements } from "@/content/achievements";
+import { experience } from "@/content/experience";
+import { formatRange } from "@/lib/format";
 import { aboutPhoto } from "@/lib/images";
 import { site } from "@/lib/site";
 
@@ -93,6 +95,36 @@ export default function AboutPage() {
               <p className="font-medium">{f.area}</p>
               <p className="font-mono text-xs leading-relaxed text-muted">{f.items}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience — full history */}
+      <section className="mt-20">
+        <p className="label">Experience</p>
+        <div className="mt-6 divide-y divide-line border-y border-line">
+          {experience.map((e) => (
+            <article key={e.slug} className="grid gap-3 py-8 sm:grid-cols-[1fr_2fr] sm:gap-8">
+              <div>
+                <h3 className="font-medium tracking-tight">{e.company}</h3>
+                <p className="mt-1 font-mono text-[11px] text-muted">
+                  {formatRange(e.start, e.end)}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">{e.role}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{e.summary}</p>
+                <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-muted">
+                  {e.highlights.map((h) => (
+                    <li key={h} className="flex gap-2">
+                      <span className="select-none font-mono text-muted/60">–</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 font-mono text-[11px] text-muted">{e.stack.join(" · ")}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>

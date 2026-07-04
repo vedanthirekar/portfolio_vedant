@@ -1,23 +1,31 @@
 @import "tailwindcss";
 
+/* Sea Mist palette (design-lab option A): warm cream paper, dark ink text,
+   sage accents, dusty rose in tiny doses, deep sage-tinted panel. */
 :root {
-  --paper: #faf9f6;
-  --ink: #1d1c1a;
-  --muted: #6f6b63;
-  --line: #e4e1d8;
-  --accent: #b45309;
-  --panel: #161512;
-  --panel-ink: #d8d5cc;
-  --panel-muted: #8a867c;
-  --ok: #3fb950;
+  --paper: #ece7e1;
+  --surface: #f5f2ee;
+  --ink: #26241f;
+  --muted: #6e6961;
+  --line: #d5dad6;
+  --sage: #8aa2a0;
+  --accent: #5f7975; /* deep sage — the only mist tone dark enough for text */
+  --rose: #d6a495;
+  --panel: #232826;
+  --panel-ink: #e7e1db;
+  --panel-muted: #848d88;
+  --ok: #7fb89a;
 }
 
 @theme inline {
   --color-paper: var(--paper);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-sage: var(--sage);
   --color-accent: var(--accent);
+  --color-rose: var(--rose);
   --color-panel: var(--panel);
   --color-panel-ink: var(--panel-ink);
   --color-panel-muted: var(--panel-muted);
@@ -53,7 +61,7 @@ body {
   color: var(--accent);
 }
 
-/* Mono section label, e.g. "01 — WORK" */
+/* Mono section label, e.g. "SELECTED WORK" */
 .label {
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.6875rem;

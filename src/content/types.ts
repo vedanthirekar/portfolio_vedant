@@ -17,6 +17,8 @@ export interface Experience {
   start: string; // "YYYY-MM"
   end: string | null; // null = present
   summary: string;
+  /** Short role descriptor for compact rows, e.g. "RAG pipelines on Azure OpenAI" */
+  tagline: string;
   highlights: string[];
   stack: string[];
 }
@@ -39,6 +41,8 @@ export interface Achievement {
 
 export interface NowUpdate {
   date: string; // "YYYY-MM-DD"
+  /** One short line for the footer console, e.g. "building this site · learning multi-agent RL" */
+  summary: string;
   entries: { label: string; text: string }[];
 }
 

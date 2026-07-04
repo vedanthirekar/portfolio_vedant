@@ -58,7 +58,7 @@ export default function WorkPage() {
             <div>
               <p className="font-medium">{p.oneLiner}</p>
               <p className="mt-3 leading-relaxed text-muted">{p.description}</p>
-              <div className="mt-6 rounded-md border border-line bg-white/50 p-4">
+              <div className="mt-6 rounded-md border border-line bg-surface p-4">
                 <p className="label mb-3">Honest notes — what was traded away</p>
                 <ul className="space-y-2 text-sm leading-relaxed text-muted">
                   {p.tradeoffs.map((t) => (
