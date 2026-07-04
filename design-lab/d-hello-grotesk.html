@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Option D — Hello Grotesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f4f4f2;
+    --ink: #222222;
+    --gray: #7b7b7b;
+    --line: #e4e4e1;
+    --dark: #1b1b1a;
+    --dark-ink: #d9d9d5;
+    --dark-muted: #8d8d88;
+    --ok: #7fb89a;
+    --rose: #d6a495;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body { background: var(--white); color: var(--ink); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .band { padding-left: 6vw; padding-right: 6vw; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+  a { color: inherit; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 26px 6vw; }
+  nav .links { display: flex; gap: 28px; font-size: 13px; color: var(--gray); }
+  nav .links a { text-decoration: none; }
+  nav .links a:hover { color: var(--ink); }
+  .brand { font-weight: 600; font-size: 15px; text-decoration: none; letter-spacing: -0.01em; }
+  nav .cta { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* hero */
+  .hero { background: var(--tint); display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 4vw; padding-top: 48px; min-height: 78vh; position: relative; overflow: hidden; }
+  .hero .bgword { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Archivo, sans-serif; font-weight: 500; font-size: 24vw; color: rgba(34,34,34,0.03); letter-spacing: -0.03em; pointer-events: none; user-select: none; }
+  .hero .left { padding-bottom: 9vh; position: relative; z-index: 1; }
+  .stats { display: flex; gap: 56px; margin-bottom: 8vh; }
+  .stat .num { font-family: Archivo, sans-serif; font-weight: 300; font-size: 44px; letter-spacing: -0.02em; }
+  .stat .num sup { font-size: 22px; color: var(--gray); }
+  .stat .cap { margin-top: 4px; font-size: 12px; color: var(--gray); }
+  .stat .cap i { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 10px; color: #9a9a95; display: block; margin-top: 2px; }
+  .hero h1 { font-family: Archivo, sans-serif; font-weight: 300; font-size: clamp(72px, 11vw, 180px); line-height: 0.95; letter-spacing: -0.035em; }
+  .hero .tag { margin-top: 22px; font-size: 15px; color: var(--gray); }
+  .hero .tag b { color: var(--ink); font-weight: 500; }
+  .hero .scroll { margin-top: 7vh; font-size: 12px; color: var(--gray); }
+  .hero .right { position: relative; z-index: 1; align-self: end; }
+  .hero .right img { display: block; width: 100%; max-width: 460px; margin: 0 auto; filter: grayscale(100%) contrast(1.03); }
+  .hero .right .ph { aspect-ratio: 4/5; max-width: 420px; margin: 0 auto; background: linear-gradient(160deg, #dcdcd8, #c9c9c4); }
+
+  /* section head */
+  .sec { padding-top: 110px; padding-bottom: 40px; }
+  .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--gray); }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--ink); }
+  .sec h2 { font-family: Archivo, sans-serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 72px); letter-spacing: -0.025em; margin-top: 24px; }
+
+  /* work grid */
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 40px; }
+  .work { text-decoration: none; }
+  .work .img { aspect-ratio: 4/3; border-radius: 10px; background: var(--tint); border: 1px solid var(--line); position: relative; overflow: hidden; transition: transform .2s; }
+  .work:hover .img { transform: translateY(-4px); }
+  .work .img .arrow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; border-radius: 999px; background: var(--ink); color: #fff; display: none; align-items: center; justify-content: center; font-size: 18px; }
+  .work:hover .img .arrow { display: flex; }
+  .g1 { background: linear-gradient(150deg, #e8e8e4, #d3d3ce) !important; }
+  .g2 { background: linear-gradient(150deg, #e2e5e3, #cbd2cf) !important; }
+  .g3 { background: linear-gradient(150deg, #e9e4e0, #d8ccc5) !important; }
+  .work .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; }
+  .work .meta h3 { font-size: 16px; font-weight: 500; }
+  .work .meta span { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gray); }
+  .work p { margin-top: 6px; font-size: 13px; line-height: 1.55; color: var(--gray); }
+  .more { text-align: center; padding: 12px 0 40px; font-size: 13px; color: var(--gray); }
+  .more a { color: var(--ink); }
+
+  /* experience rows */
+  .exps { background: var(--tint); padding-top: 100px; padding-bottom: 100px; }
+  .exps .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; margin-bottom: 56px; }
+  .exps .intro p { font-size: 14px; line-height: 1.65; color: var(--gray); max-width: 440px; }
+  .erow { display: grid; grid-template-columns: 1.2fr 1.6fr auto; gap: 32px; align-items: center; padding: 26px 0; border-top: 1px solid var(--line); }
+  .erow:last-child { border-bottom: 1px solid var(--line); }
+  .erow h3 { font-size: 18px; font-weight: 500; }
+  .erow .dates { margin-top: 4px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gray); }
+  .erow p { font-size: 13px; line-height: 1.55; color: var(--gray); }
+  .chips { display: flex; gap: 8px; }
+  .chip { border: 1px solid var(--line); background: var(--white); border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--ink); white-space: nowrap; }
+
+  /* contact + dark footer */
+  .contact { text-align: center; padding-top: 110px; padding-bottom: 90px; }
+  .contact h2 { font-family: Archivo, sans-serif; font-weight: 400; font-size: clamp(34px, 4vw, 60px); letter-spacing: -0.02em; }
+  .contact p { margin-top: 16px; font-size: 14px; color: var(--gray); max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+  .contact .btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; }
+  .btn { padding: 13px 30px; border-radius: 999px; font-size: 14px; font-weight: 500; text-decoration: none; }
+  .btn.solid { background: var(--ink); color: #fff; }
+  .btn.ghost { border: 1px solid var(--ink); }
+
+  .foot { background: var(--dark); color: var(--dark-ink); padding-top: 64px; padding-bottom: 48px; }
+  .foot .top { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .foot .email { font-family: Archivo, sans-serif; font-weight: 300; font-size: clamp(26px, 3.4vw, 52px); letter-spacing: -0.02em; text-decoration: none; }
+  .foot .flinks { display: flex; gap: 22px; font-size: 13px; color: var(--dark-muted); }
+  .foot .flinks a { text-decoration: none; }
+  .foot .flinks a:hover { color: #fff; }
+  .console { margin-top: 52px; border-top: 1px solid #33332f; padding-top: 26px; font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  .console .row { display: flex; gap: 12px; align-items: baseline; padding: 6px 0; flex-wrap: wrap; }
+  .console .key { color: var(--dark-muted); width: 84px; flex: none; text-transform: uppercase; font-size: 10px; letter-spacing: 0.12em; }
+  .console .tests { color: var(--ok); }
+  .console .dim { color: var(--dark-muted); }
+  .console .okdot, .console .rosedot { display: inline-block; width: 7px; height: 7px; border-radius: 999px; margin-right: 9px; }
+  .console .okdot { background: var(--ok); }
+  .console .rosedot { background: var(--rose); }
+  .console a { color: var(--dark-muted); text-decoration: none; }
+  .console a:hover { color: #fff; }
+  .console .right { margin-left: auto; }
+  .foot .note { margin-top: 30px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--dark-muted); }
+  .foot .note a { color: var(--dark-ink); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: unset; }
+    .hero .right img, .hero .right .ph { max-width: 300px; }
+    .stats { gap: 28px; margin-bottom: 5vh; }
+    .works { grid-template-columns: 1fr; }
+    .exps .intro { grid-template-columns: 1fr; }
+    .erow { grid-template-columns: 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#">Vedant Hirekar</a>
+  <div class="links">
+    <a href="#">about</a><a href="#">work</a><a href="#">now</a><a href="#">changelog</a><a href="#">roadmap</a><a href="#">how this works</a><a href="#">api</a>
+  </div>
+  <a class="cta" href="#">Resume ↗</a>
+</nav>
+
+<header class="band hero">
+  <div class="bgword">VEDANT</div>
+  <div class="left">
+    <div class="stats">
+      <div class="stat">
+        <div class="num"><sup>#</sup>3</div>
+        <div class="cap">Deploys shipped <i>live from CI</i></div>
+      </div>
+      <div class="stat">
+        <div class="num">35<sup>/35</sup></div>
+        <div class="cap">Tests passing <i>on this deployment</i></div>
+      </div>
+      <div class="stat">
+        <div class="num"><sup>+</sup>120</div>
+        <div class="cap">Commits this year <i>live from GitHub</i></div>
+      </div>
+    </div>
+    <h1>Hello</h1>
+    <p class="tag">— it&apos;s <b>Vedant</b>, an AI &amp; software engineer. I learn how systems work by building them.</p>
+    <p class="scroll">Scroll down ↓</p>
+  </div>
+  <div class="right">
+    <img src="../public/images/vedant.jpg" alt="Vedant Hirekar" onerror="this.outerHTML='<div class=ph></div>'" />
+  </div>
+</header>
+
+<section class="band sec">
+  <span class="pill">Work</span>
+  <h2>Latest builds</h2>
+</section>
+<section class="band works">
+  <a class="work" href="#">
+    <div class="img g1"><span class="arrow">↗</span></div>
+    <div class="meta"><h3>Yanck</h3><span>Agentic AI · RAG</span></div>
+    <p>No-code AI assistant builder for resource-constrained SMBs.</p>
+  </a>
+  <a class="work" href="#">
+    <div class="img g2"><span class="arrow">↗</span></div>
+    <div class="meta"><h3>SOFI 2035</h3><span>Plotly · Data Viz</span></div>
+    <p>Interactive global-futures dashboard for The Millennium Project.</p>
+  </a>
+  <a class="work" href="#">
+    <div class="img g3"><span class="arrow">↗</span></div>
+    <div class="meta"><h3>Healthcare Pipeline</h3><span>Airflow · FHIR</span></div>
+    <p>Automated ETL turning FHIR patient bundles into analytics-ready data.</p>
+  </a>
+</section>
+<p class="more">Check out more <a href="#">→ View all projects</a></p>
+
+<section class="band exps">
+  <div class="intro">
+    <div>
+      <span class="pill">Experience</span>
+      <h2 style="font-size:clamp(32px,3.6vw,56px)">Explore my<br/>engineering journey</h2>
+    </div>
+    <p>From RAG pipelines on Azure to production front-end debugging and forecasting systems — three internships, real codebases, measurable outcomes. Currently completing an M.S. in Data Science at Indiana University.</p>
+  </div>
+  <div class="erow">
+    <div><h3>Methix</h3><div class="dates">Jun – Dec 2025</div></div>
+    <p>AI Developer Intern — RAG pipeline over 100+ docs with Azure OpenAI &amp; LangChain; tuned deployments to cut cloud costs.</p>
+    <div class="chips"><span class="chip">GenAI</span><span class="chip">Azure</span></div>
+  </div>
+  <div class="erow">
+    <div><h3>Parallel Wireless</h3><div class="dates">Feb – Jul 2024</div></div>
+    <p>SMO Intern — fixed production Angular performance issues; automated GUI validation with Jest.</p>
+    <div class="chips"><span class="chip">Frontend</span><span class="chip">Testing</span></div>
+  </div>
+  <div class="erow">
+    <div><h3>Krios Info Solutions</h3><div class="dates">Mar – May 2023</div></div>
+    <p>Data Science Intern — sales forecasting for 300+ SKUs; Power BI dashboards for stakeholders.</p>
+    <div class="chips"><span class="chip">ML</span><span class="chip">Analytics</span></div>
+  </div>
+</section>
+
+<section class="band contact">
+  <h2>Got a role or a project in mind?</h2>
+  <p>I&apos;m open to opportunities, collaborations, or just a chat about technology — happy to talk through any of the work above in depth.</p>
+  <div class="btns">
+    <a class="btn solid" href="#">Get in touch</a>
+    <a class="btn ghost" href="#">Resume</a>
+  </div>
+</section>
+
+<footer class="band foot">
+  <div class="top">
+    <a class="email" href="#">hirekarvedant@gmail.com</a>
+    <div class="flinks"><a href="#">github</a><a href="#">linkedin</a><a href="#">source ↗</a></div>
+  </div>
+  <div class="console">
+    <div class="row">
+      <span class="key">status</span>
+      <span><span class="okdot"></span>deploy #3 · 1f4be5d · 2m 04s · <span class="tests">35/35 tests ✓</span></span>
+      <a class="right" href="#">how this works →</a>
+    </div>
+    <div class="row">
+      <span class="key">now</span>
+      <span><span class="rosedot"></span>building this site · learning multi-agent RL</span>
+    </div>
+    <div class="row">
+      <span class="key">activity</span>
+      <span class="dim">10m ago pushed to portfolio_vedant · 8h ago pushed to DSA</span>
+    </div>
+  </div>
+  <p class="note">Every engineering practice on my resume runs live on this site — <a href="#">audit it yourself</a>.</p>
+</footer>
+
+</body>
+</html>

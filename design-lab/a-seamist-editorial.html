@@ -16,8 +16,10 @@
     --sage: #8aa2a0;       /* teal-sage accent */
     --sage-deep: #5f7975;  /* darker sage, safe for link text */
     --rose: #d6a495;       /* dusty rose — tiny doses only */
-    --panel: #232826;      /* deep sage-tinted ink for ops */
-    --panel-ink: #d8d5cc;
+    --panel: #232826;      /* deep sage-tinted ink for the console */
+    --panel-ink: #e7e1db;
+    --panel-muted: #848d88;
+    --ok: #7fb89a;
   }
   * { margin: 0; box-sizing: border-box; }
   body {
@@ -41,7 +43,7 @@
   .brand { font-weight: 600; letter-spacing: -0.01em; text-decoration: none; }
 
   /* hero */
-  .hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 72px; align-items: center; padding: 96px 0 72px; }
+  .hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 72px; align-items: center; padding: 96px 0 88px; }
   .hero h1 { font-family: Newsreader, serif; font-size: clamp(44px, 4.6vw, 72px); line-height: 1.04; letter-spacing: -0.015em; font-weight: 400; }
   .hero h1 em { color: var(--sage-deep); }
   .hero p.sub { margin-top: 26px; max-width: 480px; font-size: 17px; line-height: 1.65; color: var(--muted); }
@@ -53,15 +55,10 @@
   .photo { aspect-ratio: 4/5; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #dfe5e2, #cfd8d4); }
   .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* activity ticker — one quiet line */
-  .ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .ticker .wrap { display: flex; gap: 12px; align-items: center; padding-top: 14px; padding-bottom: 14px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); overflow: hidden; white-space: nowrap; }
-  .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--rose); flex: none; }
-  .ticker b { color: var(--ink); font-weight: 500; }
-
   /* work */
-  .work { padding: 88px 0; }
-  .work-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+  .work { border-top: 1px solid var(--line); padding: 72px 0 88px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+  .sec-head a { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--sage-deep); }
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; transition: border-color .15s; }
   .card:hover { border-color: var(--sage); }
@@ -73,22 +70,29 @@
   .card p { margin-top: 10px; font-size: 14px; line-height: 1.6; color: var(--muted); flex: 1; }
   .card .stack { margin-top: 18px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--sage-deep); }
 
-  /* experience — one line */
-  .exp { border-top: 1px solid var(--line); }
-  .exp .wrap { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; padding-top: 26px; padding-bottom: 26px; }
-  .exp .roles { display: flex; gap: 36px; flex-wrap: wrap; font-size: 14px; }
-  .exp .roles span b { font-weight: 600; }
-  .exp .roles span i { font-style: normal; color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; margin-left: 8px; }
+  /* experience — a real content section, not footer furniture */
+  .expsec { border-top: 1px solid var(--line); padding: 72px 0 96px; }
+  .exp-rows { display: flex; flex-direction: column; }
+  .exp-row { display: grid; grid-template-columns: 240px 1fr 180px; gap: 32px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .exp-row:first-child { border-top: 1px solid var(--line); }
+  .exp-row b { font-size: 17px; font-weight: 600; }
+  .exp-row span { font-size: 14px; color: var(--muted); }
+  .exp-row i { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); text-align: right; }
 
-  /* ops footer */
-  footer { margin-top: 88px; padding: 0 0 56px; }
-  .ops { background: var(--panel); border-radius: 14px; padding: 18px 24px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--panel-ink); }
-  .ops .ok { width: 8px; height: 8px; border-radius: 999px; background: #7fb89a; }
-  .ops .sep { color: #5b615c; }
-  .ops .tests { color: #9fc3ae; }
-  .ops a { color: #9aa39e; text-decoration: none; margin-left: auto; }
-  .ops a:hover { color: #fff; }
-  .foot-note { margin-top: 18px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
+  /* footer — the console (status / now / activity), C-style */
+  footer { padding: 0 0 160px; }
+  .console { background: var(--panel); border-radius: 14px; padding: 22px 26px; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--panel-ink); }
+  .console .row { display: flex; gap: 12px; align-items: baseline; padding: 7px 0; flex-wrap: wrap; }
+  .console .key { color: var(--sage); width: 84px; flex: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.12em; }
+  .console .dim { color: var(--panel-muted); }
+  .console .tests { color: var(--ok); }
+  .console .okdot, .console .rosedot { display: inline-block; width: 7px; height: 7px; border-radius: 999px; margin-right: 9px; }
+  .console .okdot { background: var(--ok); }
+  .console .rosedot { background: var(--rose); }
+  .console a { color: var(--panel-muted); text-decoration: none; }
+  .console a:hover { color: #fff; }
+  .console .right { margin-left: auto; }
+  .foot-note { margin-top: 32px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
   .foot-note a { color: var(--sage-deep); }
 
   @media (max-width: 900px) {
@@ -96,6 +100,9 @@
     .hero { grid-template-columns: 1fr; gap: 36px; padding: 56px 0 48px; }
     .photo { max-width: 320px; }
     .cards { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; gap: 4px; }
+    .exp-row i { text-align: left; }
+    .console .key { width: 100%; }
   }
 </style>
 </head>
@@ -105,7 +112,7 @@
   <div class="wrap">
     <a class="brand" href="#">Vedant Hirekar</a>
     <div class="links">
-      <a href="#">work</a><a href="#">now</a><a href="#">about</a><a href="#">changelog</a><a href="#">roadmap</a><a href="#">how this works</a><a href="#">api</a>
+      <a href="#">about</a><a href="#">work</a><a href="#">now</a><a href="#">changelog</a><a href="#">roadmap</a><a href="#">how this works</a><a href="#">api</a>
     </div>
   </div>
 </nav>
@@ -124,64 +131,64 @@
   <div class="photo"><img src="../public/images/vedant.jpg" alt="Vedant Hirekar" onerror="this.remove()" /></div>
 </header>
 
-<div class="ticker">
+<section class="work">
   <div class="wrap">
-    <span class="dot"></span>
-    <span><b>now</b> — building this site · learning multi-agent RL</span>
-    <span style="color:var(--line)">|</span>
-    <span><b>10m ago</b> pushed to vedanthirekar/portfolio_vedant</span>
-    <span style="color:var(--line)">|</span>
-    <span><b>8h ago</b> pushed to vedanthirekar/DSA</span>
-  </div>
-</div>
-
-<section class="wrap work">
-  <div class="work-head">
-    <p class="label">Selected work</p>
-    <a class="mono" style="font-size:12px;color:var(--sage-deep)" href="#">all projects →</a>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="thumb t1"></div>
-      <h3>Yanck</h3>
-      <p>No-code AI assistant builder for resource-constrained SMBs.</p>
-      <span class="stack">Agentic AI · LangChain · RAG</span>
+    <div class="sec-head">
+      <p class="label">Selected work</p>
+      <a href="#">all projects →</a>
     </div>
-    <div class="card">
-      <div class="thumb t2"></div>
-      <h3>SOFI 2035</h3>
-      <p>Interactive global-futures dashboard built for The Millennium Project.</p>
-      <span class="stack">Plotly · Python · Data Viz</span>
-    </div>
-    <div class="card">
-      <div class="thumb t3"></div>
-      <h3>Healthcare Pipeline</h3>
-      <p>Automated ETL turning FHIR patient bundles into analytics-ready data.</p>
-      <span class="stack">Airflow · PySpark · FHIR</span>
+    <div class="cards">
+      <div class="card">
+        <div class="thumb t1"></div>
+        <h3>Yanck</h3>
+        <p>No-code AI assistant builder for resource-constrained SMBs.</p>
+        <span class="stack">Agentic AI · LangChain · RAG</span>
+      </div>
+      <div class="card">
+        <div class="thumb t2"></div>
+        <h3>SOFI 2035</h3>
+        <p>Interactive global-futures dashboard built for The Millennium Project.</p>
+        <span class="stack">Plotly · Python · Data Viz</span>
+      </div>
+      <div class="card">
+        <div class="thumb t3"></div>
+        <h3>Healthcare Pipeline</h3>
+        <p>Automated ETL turning FHIR patient bundles into analytics-ready data.</p>
+        <span class="stack">Airflow · PySpark · FHIR</span>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="exp">
+<section class="expsec">
   <div class="wrap">
-    <p class="label">Experience</p>
-    <div class="roles">
-      <span><b>Methix</b><i>2025</i></span>
-      <span><b>Parallel Wireless</b><i>2024</i></span>
-      <span><b>Krios Info Solutions</b><i>2023</i></span>
+    <div class="sec-head">
+      <p class="label">Experience</p>
+      <a href="#">full history →</a>
     </div>
-    <a class="mono" style="font-size:12px;color:var(--sage-deep)" href="#">full history →</a>
+    <div class="exp-rows">
+      <div class="exp-row"><b>Methix</b><span>AI Developer Intern — RAG pipelines on Azure OpenAI</span><i>Jun – Dec 2025</i></div>
+      <div class="exp-row"><b>Parallel Wireless</b><span>SMO Intern — Angular performance &amp; Jest test automation</span><i>Feb – Jul 2024</i></div>
+      <div class="exp-row"><b>Krios Info Solutions</b><span>Data Science Intern — sales forecasting &amp; Power BI</span><i>Mar – May 2023</i></div>
+    </div>
   </div>
-</div>
+</section>
 
 <footer class="wrap">
-  <div class="ops">
-    <span class="ok"></span>
-    <span>deploy #3</span><span class="sep">·</span>
-    <span>1f4be5d</span><span class="sep">·</span>
-    <span>2m 04s</span><span class="sep">·</span>
-    <span class="tests">35/35 tests ✓</span>
-    <a href="#">how this works →</a>
+  <div class="console">
+    <div class="row">
+      <span class="key">status</span>
+      <span><span class="okdot"></span>deploy #3 · 1f4be5d · 2m 04s · <span class="tests">35/35 tests ✓</span></span>
+      <a class="right" href="#">how this works →</a>
+    </div>
+    <div class="row">
+      <span class="key">now</span>
+      <span><span class="rosedot"></span>building this site · learning multi-agent RL</span>
+    </div>
+    <div class="row">
+      <span class="key">activity</span>
+      <span class="dim">10m ago pushed to portfolio_vedant · 8h ago pushed to DSA</span>
+    </div>
   </div>
   <p class="foot-note">Every engineering practice on my resume runs live on this site — <a href="#">audit it yourself</a>.</p>
 </footer>
