@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Observable Portfolio
 
-## Getting Started
+Vedant Hirekar's portfolio — built as a piece of software that shows its own
+engineering instead of just describing it. The site publishes its CI/CD
+pipeline state live, generates its changelog from git history, documents its
+own architecture, and serves its content through a public JSON API.
 
-First, run the development server:
+Full design rationale: [`/how-this-works`](https://vedanthirekar.netlify.app/how-this-works) on the live site.
+
+## Stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Vitest · GitHub Actions → Vercel
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm test        # vitest
+npm run lint
+npm run build   # bakes build-info.json via prebuild
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pipeline
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Every push to `main` runs `.github/workflows/deploy.yml`: lint → test → build
+→ deploy (prebuilt) to Vercel. The ops panel on the site reports on this exact
+pipeline — build metadata (commit, deploy number, test counts) is baked into
+the artifact by `scripts/build-info.mjs`, and live run status comes from the
+GitHub API at request time.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Required repository secrets
 
-## Learn More
+| Secret | Purpose |
+| --- | --- |
+| `VERCEL_TOKEN` | Vercel CLI auth for prebuilt deploys |
+| `VERCEL_ORG_ID` | Vercel scope |
+| `VERCEL_PROJECT_ID` | Vercel project |
 
-To learn more about Next.js, take a look at the following resources:
+### Optional Vercel env vars
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Purpose |
+| --- | --- |
+| `GITHUB_TOKEN` | Raises GitHub API rate limits for the ops panel / changelog |
+| `NEXT_PUBLIC_SITE_REPO` | Overrides the `owner/name` repo shown and queried |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel's git integration should stay **disabled** — GitHub Actions owns the
+deploy, which is the point.

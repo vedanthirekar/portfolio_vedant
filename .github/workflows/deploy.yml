@@ -1,0 +1,46 @@
+# The pipeline this site's ops panel reports on. Every step here is real:
+# if lint or tests fail, nothing deploys. Deploys are prebuilt in CI and
+# pushed to Vercel, so Vercel's own git integration stays disabled.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: install
+        run: npm ci
+
+      - name: lint
+        run: npm run lint
+
+      # JSON reporter feeds real test counts into the ops panel via
+      # scripts/build-info.mjs (runs as prebuild inside `vercel build`).
+      - name: test
+        run: npx vitest run --reporter=default --reporter=json --outputFile=test-results.json
+
+      - name: pull vercel config
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: build
+        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: deploy
+        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
