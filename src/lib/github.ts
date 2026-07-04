@@ -88,14 +88,29 @@ export function mapGithubEvents(raw: any[]): ActivityEvent[] {
     if (!repo || !date) continue;
     const url = `https://github.com/${repo}`;
     if (e.type === "PushEvent") {
-      const commits = e.payload?.commits ?? [];
-      if (commits.length === 0) continue;
+      // The public events API serves slim payloads (no commits array) —
+      // fall back to branch @ short-sha when commit messages are absent.
+      const commits = Array.isArray(e.payload?.commits) ? e.payload.commits : [];
+      const branch = String(e.payload?.ref ?? "").replace("refs/heads/", "");
+      const head = String(e.payload?.head ?? "").slice(0, 7);
       events.push({
-        verb: `pushed ${commits.length} commit${commits.length === 1 ? "" : "s"} to`,
+        verb: commits.length
+          ? `pushed ${commits.length} commit${commits.length === 1 ? "" : "s"} to`
+          : "pushed to",
         repo,
-        detail: String(commits[commits.length - 1]?.message ?? "").split("\n")[0],
+        detail: commits.length
+          ? String(commits[commits.length - 1]?.message ?? "").split("\n")[0]
+          : [branch, head].filter(Boolean).join(" @ "),
         date,
         url,
+      });
+    } else if (e.type === "ForkEvent") {
+      events.push({
+        verb: "forked",
+        repo,
+        detail: e.payload?.forkee?.full_name ?? "",
+        date,
+        url: e.payload?.forkee?.html_url ?? url,
       });
     } else if (e.type === "PullRequestEvent" && e.payload?.action === "opened") {
       events.push({
@@ -126,9 +141,13 @@ export async function fetchUserActivity(): Promise<ActivityEvent[] | null> {
       return null;
     }
     const data = await res.json();
-    if (!Array.isArray(data)) return null;
+    if (!Array.isArray(data)) {
+      console.warn("[github] user activity: response is not an array");
+      return null;
+    }
     return mapGithubEvents(data);
-  } catch {
+  } catch (err) {
+    console.warn("[github] user activity fetch threw:", err);
     return null;
   }
 }
