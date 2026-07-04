@@ -17,15 +17,15 @@ export const metadata: Metadata = {
 const forte = [
   {
     area: "Software Engineering",
-    items: "Python, SQL, MongoDB, system fundamentals",
+    items: "Python, SQL, TypeScript/React, FastAPI, REST APIs, system fundamentals",
   },
   {
     area: "AI & Data Systems",
-    items: "ML, generative AI, LLM pipelines, computer vision",
+    items: "LLM pipelines, agentic AI & RAG, reinforcement learning, ML, computer vision",
   },
   {
     area: "Infrastructure",
-    items: "Linux, Git, Docker, CI/CD, cloud (Azure)",
+    items: "Linux, Git, Docker, CI/CD, HPC/Slurm, Azure, AWS",
   },
 ];
 

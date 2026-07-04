@@ -28,9 +28,9 @@ export default function Home() {
             <em className="text-accent">by building them.</em>
           </h1>
           <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-            Fundamentals, simplicity, and real-world use. M.S. in Data Science
-            at Indiana University — previously at Methix, Parallel Wireless,
-            and Krios Info Solutions.
+            Currently an AI Engineer at Project 990, shipping LLM pipelines at
+            175k+ scale. M.S. in Data Science at Indiana University —
+            previously at Methix, Parallel Wireless, and Krios Info Solutions.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a

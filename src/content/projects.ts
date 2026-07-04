@@ -4,15 +4,30 @@ import type { Project } from "./types";
 // Drafted from project context — review and edit so every line is true.
 export const projects: Project[] = [
   {
+    slug: "ncaa-analytics",
+    name: "NCAA Analytics Challenge",
+    oneLiner:
+      "Won the NCAA Final Four Analytics Challenge — predicting tournament seeds for 360+ teams.",
+    description:
+      "Predicted NCAA Tournament seedings for 360+ college basketball teams from 5 seasons of historical data (1,353 team-seasons). The real problem was reverse-engineering how the selection committee actually weighs NET rankings, quadrant records, and conference strength — messy, inconsistent human logic. A 7-model gradient-boosting ensemble over 104 engineered features reached 78% accuracy, cutting prediction error by 43% versus baseline, with Tableau dashboards that turned the findings into a narrative for NCAA stakeholders.",
+    stack: ["Machine Learning", "Gradient Boosting", "Feature Engineering", "Tableau"],
+    links: {},
+    tradeoffs: [
+      "Minimizing RMSE on seeds sounds clean on paper, but committee logic is inconsistent — most of the work was iterative error analysis to find where the model was systematically wrong, then encoding those patterns as features.",
+      "The Tableau narrative ended up mattering as much as the model when presenting to judges — a lesson in how far accuracy alone gets you.",
+    ],
+    featured: true,
+  },
+  {
     slug: "yanck",
     name: "Yanck",
-    oneLiner: "No-code AI assistant builder for resource-constrained SMBs.",
+    oneLiner: "No-code RAG chatbot platform for teams with zero ML engineers.",
     description:
-      "YANCK (Yet Another No-Code Killer) lets small businesses create AI assistants on their own data through a simple guided workflow: model selection, data upload, and prompt configuration. Built to lower the barrier for teams with no ML engineers on staff.",
-    stack: ["Agentic AI", "LangChain", "RAG", "LLMs"],
+      "A platform where non-technical users create and deploy AI assistants on their own data through a guided workflow — ingest documents, generate embeddings, serve responses through Google Gemini. The hard part wasn't the RAG; it was making integration painless for whoever happened to be on the client's side, so it ships three deployment paths: an embeddable JS widget, an iframe, and a REST API with key-based auth.",
+    stack: ["LangChain", "Google Gemini", "RAG", "Flask"],
     links: { github: "https://github.com/vedanthirekar/Yanck" },
     tradeoffs: [
-      "Chose a guided linear workflow over a flexible node editor — less powerful, but SMB users finished setup instead of abandoning it.",
+      "Chose a guided linear workflow over a flexible node editor — less powerful, but non-technical users finished setup instead of abandoning it.",
       "Retrieval quality depends heavily on how users chunk their uploads; automatic chunking heuristics are good enough, not great.",
     ],
     featured: true,
@@ -39,31 +54,33 @@ export const projects: Project[] = [
     slug: "healthcare-data-pipeline",
     name: "Healthcare Data Pipeline",
     oneLiner:
-      "Automated ETL pipeline turning FHIR patient bundles into analytics-ready data.",
+      "ETL pipeline standardizing patient and device data, with live monitoring dashboards.",
     description:
-      "An end-to-end orchestrated ETL pipeline that detects incoming FHIR (HL7) patient bundles, extracts and transforms the clinical information, and outputs structured CSVs ready for downstream analytics tools like Tableau or Power BI.",
-    stack: ["Airflow", "PySpark", "FHIR / HL7", "Data Engineering"],
+      "An end-to-end pipeline using Spark and Airflow to standardize FHIR patient and device data landing in AWS S3, with Tableau dashboards connected to live MySQL pipelines for real-time monitoring of throughput and utilization metrics.",
+    stack: ["Airflow", "PySpark", "AWS S3", "Tableau", "FHIR"],
     links: {
       github: "https://github.com/vedanthirekar/healthcare-data-pipeline",
     },
     tradeoffs: [
-      "CSV output was chosen over a warehouse target so the pipeline stays portable for demos — a real deployment would land in a proper analytical store.",
-      "PySpark is overkill for the demo data volume; it was used deliberately to exercise the same tooling that production-scale volumes need.",
+      "Spark is overkill for the demo data volume; it was used deliberately to exercise the same tooling that production-scale volumes need.",
+      "Live MySQL-backed dashboards demo well but need connection pooling and caching before they'd survive real concurrent load.",
     ],
-    featured: true,
+    featured: false,
   },
   {
-    slug: "yafa",
-    name: "Yafa",
-    oneLiner: "AI-powered personal finance manager with voice expense logging.",
+    slug: "expense-tracker",
+    name: "AI Expense Tracker",
+    oneLiner:
+      "Voice-driven expense tracking with semantic categorization at 92% accuracy.",
     description:
-      "An intelligent finance application featuring AI-enabled voice recognition and NLP for seamless expense tracking. Provides expense analysis, spending patterns, and personalized investment recommendations. Won the GeeksforGeeks Hackathon.",
-    stack: ["NLP", "AI/ML", "Power BI", "SQL", "Python"],
+      "A FastAPI backend for an AI-powered expense tracker supporting voice-based transaction processing and real-time categorization. Expenses are semantically categorized using BERT embeddings with Qdrant vector search (92% classification accuracy), with Power BI dashboards for time-series spending forecasts. Evolved from Yafa, the GeeksforGeeks Hackathon winner.",
+    stack: ["FastAPI", "BERT", "Qdrant", "Time Series", "Power BI"],
     links: {
       github: "https://github.com/vedanthirekar/Yafa-Personal-Finance-Manager",
     },
     tradeoffs: [
-      "Voice-to-text accuracy drops with background noise and accents; a confirmation step was added rather than chasing model accuracy under hackathon time pressure.",
+      "Voice-to-text accuracy drops with background noise and accents; a confirmation step was added rather than chasing model accuracy.",
+      "Embedding-based categorization beats rules at 92%, but the last 8% is ambiguous even to humans — a category-correction flow mattered more than model tuning.",
     ],
     featured: false,
   },
@@ -76,7 +93,7 @@ export const projects: Project[] = [
     stack: ["Computer Vision", "OpenCV", "Python", "Image Processing"],
     links: {},
     tradeoffs: [
-      "Classical template matching over a learned model — explainable and trainable-data-free, but it degrades on handwritten or low-quality scans.",
+      "Classical template matching over a learned model — explainable and training-data-free, but it degrades on handwritten or low-quality scans.",
     ],
     featured: false,
   },
