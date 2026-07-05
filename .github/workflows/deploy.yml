@@ -28,9 +28,11 @@ jobs:
       - name: install
         run: npm ci
 
-      # Pinned so pull/build/deploy all run the exact same CLI.
+      # Pinned so pull/build/deploy all run the exact same CLI. 54.20.1 (latest)
+      # has a prebuilt-deploy regression: the server-side processor fails with
+      # ENOENT on .vercel/output/builds.json. 54.6.1 predates it.
       - name: install vercel cli
-        run: npm install --global vercel@54.20.1
+        run: npm install --global vercel@54.6.1
 
       - name: lint
         run: npm run lint
