@@ -20,6 +20,14 @@ function git(cmd) {
 }
 
 function readTests() {
+  // Remote builds on Vercel can't see the Actions workspace, so the pipeline
+  // forwards the counts from test-results.json as build env vars.
+  if (process.env.TESTS_TOTAL) {
+    return {
+      total: Number(process.env.TESTS_TOTAL),
+      passed: Number(process.env.TESTS_PASSED),
+    };
+  }
   try {
     const report = JSON.parse(readFileSync(join(root, "test-results.json"), "utf8"));
     return { total: report.numTotalTests, passed: report.numPassedTests };

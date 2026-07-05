@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const decisions = [
   {
-    decision: "GitHub Actions owns the whole pipeline",
-    why: "Vercel could deploy this site automatically on push, but then the pipeline shown in the ops panel would be someone else's. Actions runs lint, tests, and the build, then pushes the prebuilt output to Vercel - so every claim on this page maps to a workflow file you can read in the repo.",
+    decision: "GitHub Actions gates every deploy",
+    why: "Vercel could deploy this site automatically on push, but then the pipeline shown in the ops panel would be someone else's. Instead, Actions runs lint and the test suite on every push, and only a green run is allowed to trigger the deploy - Vercel builds the exact commit the gate approved, with the commit hash, run number, and test counts forwarded from the pipeline into the build. Every claim on this page maps to a workflow file you can read in the repo.",
   },
   {
     decision: "Content is typed TypeScript, not a CMS",
@@ -99,7 +99,7 @@ export default function HowThisWorksPage() {
             ["Language", "TypeScript, strict"],
             ["Styling", "Tailwind CSS v4 - design tokens in CSS, no UI kit"],
             ["Testing", "Vitest - content integrity, formatting, API shapes"],
-            ["CI/CD", "GitHub Actions → Vercel (prebuilt deploys)"],
+            ["CI/CD", "GitHub Actions (lint + tests gate every deploy) → Vercel"],
             ["Data", "Typed TS content modules + GitHub REST API"],
           ].map(([k, v]) => (
             <div key={k} className="grid gap-1 py-3 sm:grid-cols-[1fr_2fr] sm:gap-8">

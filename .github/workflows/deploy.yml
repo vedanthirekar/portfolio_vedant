@@ -1,6 +1,9 @@
 # The pipeline this site's ops panel reports on. Every step here is real:
-# if lint or tests fail, nothing deploys. Deploys are prebuilt in CI and
-# pushed to Vercel, so Vercel's own git integration stays disabled.
+# if lint or tests fail, nothing deploys. Actions is the only thing allowed
+# to trigger a deploy; Vercel builds the exact commit the gate approved.
+# (Prebuilt CI deploys are disabled for now: Vercel's prebuilt ingestion
+# currently fails server-side with ENOENT on .vercel/output/builds.json,
+# reproduced across CLI 54.6.1/54.20.1, fresh projects, and archive mode.)
 name: deploy
 
 on:
@@ -28,28 +31,27 @@ jobs:
       - name: install
         run: npm ci
 
-      # Pinned so pull/build/deploy all run the exact same CLI. 54.20.1 (latest)
-      # has a prebuilt-deploy regression: the server-side processor fails with
-      # ENOENT on .vercel/output/builds.json. 54.6.1 predates it.
+      # Pinned so every run uses a known CLI.
       - name: install vercel cli
         run: npm install --global vercel@54.6.1
 
       - name: lint
         run: npm run lint
 
-      # JSON reporter feeds real test counts into the ops panel via
-      # scripts/build-info.mjs (runs as prebuild inside `vercel build`).
+      # JSON reporter captures real test counts; the deploy step forwards
+      # them into the Vercel build so scripts/build-info.mjs bakes them
+      # into the artifact (shown in the ops panel).
       - name: test
         run: npx vitest run --reporter=default --reporter=json --outputFile=test-results.json
 
-      - name: pull vercel config
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: build
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      # --archive=tgz uploads the build output as a single tarball. Per-file
-      # uploads were silently dropping .vercel/output/builds.json, making the
-      # deployment fail server-side with ENOENT on that file.
       - name: deploy
-        run: vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          TESTS_TOTAL=$(node -p "require('./test-results.json').numTotalTests")
+          TESTS_PASSED=$(node -p "require('./test-results.json').numPassedTests")
+          vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} \
+            --build-env GITHUB_ACTIONS=true \
+            --build-env GITHUB_SHA=${{ github.sha }} \
+            --build-env GITHUB_REF_NAME=${{ github.ref_name }} \
+            --build-env GITHUB_RUN_NUMBER=${{ github.run_number }} \
+            --build-env TESTS_TOTAL=$TESTS_TOTAL \
+            --build-env TESTS_PASSED=$TESTS_PASSED
