@@ -28,6 +28,10 @@ jobs:
       - name: install
         run: npm ci
 
+      # Pinned so pull/build/deploy all run the exact same CLI.
+      - name: install vercel cli
+        run: npm install --global vercel@54.20.1
+
       - name: lint
         run: npm run lint
 
@@ -37,17 +41,13 @@ jobs:
         run: npx vitest run --reporter=default --reporter=json --outputFile=test-results.json
 
       - name: pull vercel config
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: build
-        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: debug build output
-        run: |
-          echo "vercel version: $(npx vercel --version)"
-          find .vercel/output -maxdepth 3
-          echo "--- builds.json ---"
-          cat .vercel/output/builds.json || echo "MISSING"
-
+      # --archive=tgz uploads the build output as a single tarball. Per-file
+      # uploads were silently dropping .vercel/output/builds.json, making the
+      # deployment fail server-side with ENOENT on that file.
       - name: deploy
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
