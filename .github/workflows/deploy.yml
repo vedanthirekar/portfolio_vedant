@@ -42,5 +42,12 @@ jobs:
       - name: build
         run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: debug build output
+        run: |
+          echo "vercel version: $(npx vercel --version)"
+          find .vercel/output -maxdepth 3
+          echo "--- builds.json ---"
+          cat .vercel/output/builds.json || echo "MISSING"
+
       - name: deploy
         run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
