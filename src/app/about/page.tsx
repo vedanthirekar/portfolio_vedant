@@ -5,7 +5,7 @@ import { education } from "@/content/education";
 import { achievements } from "@/content/achievements";
 import { experience } from "@/content/experience";
 import { formatRange } from "@/lib/format";
-import { aboutPhoto } from "@/lib/images";
+import { aboutPhoto, achievementImage } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -54,21 +54,20 @@ export default function AboutPage() {
 
       <div className="mt-10 max-w-2xl space-y-5 leading-relaxed text-muted">
         <p>
-          I&apos;m someone with an open mind, always learning. Currently pursuing my
-          Master&apos;s in Data Science at Indiana University, driven by curiosity
-          about how complex things break down into simple, manageable parts.
-        </p>
-        <p>
+          I&apos;m someone with an open mind, always learning and driven by curiosity
+          about how complex things break down into simple, manageable parts. I have always try to put myself in situations where I had to solve some kind of problem, like hackathons or improving upon some inefficiency. 
+          </p>
+          <p>
           My experience spans software fundamentals to ML, generative AI,
-          computer vision, analytics, data engineering, and visualization —
-          learned through internships, coursework, and building things.
+          computer vision, analytics, data engineering, and visualization -
+          learned through internships, coursework, and building things. This exposure to a wide range of areas has helped me develop a holistic understanding of how different components of a system interact and how to optimize them for better performance and efficiency. 
         </p>
         <p className="text-ink">
-          I&apos;d rather show you who I am than tell you. The{" "}
+          Apart from my experinces and projects, the{" "}
           <Link href="/changelog" className="link">
             changelog
           </Link>{" "}
-          shows how consistently I ship. The{" "}
+          shows how consistently I ship or try to work on learning/builing something. The{" "}
           <Link href="/work" className="link">
             honest notes on every project
           </Link>{" "}
@@ -76,8 +75,7 @@ export default function AboutPage() {
           <Link href="/how-this-works" className="link">
             how this site works
           </Link>{" "}
-          shows the engineering standards I hold myself to — on my own time,
-          when nobody&apos;s checking. And if you want to know what&apos;s up with me
+          is a concept I tried on this website to show the engineering standards I hold myself to. And if you want to know what&apos;s up with me
           right now, that&apos;s literally{" "}
           <Link href="/now" className="link">
             a page
@@ -99,7 +97,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Experience — full history */}
+      {/* Experience - full history */}
       <section className="mt-20">
         <p className="label">Experience</p>
         <div className="mt-6 divide-y divide-line border-y border-line">
@@ -138,7 +136,7 @@ export default function AboutPage() {
               <div>
                 <h3 className="font-medium tracking-tight">{e.institution}</h3>
                 <p className="mt-1 font-mono text-[11px] text-muted">
-                  {e.start} — {e.end} · GPA {e.gpa}
+                  {e.start} - {e.end} · GPA {e.gpa}
                 </p>
               </div>
               <div>
@@ -166,19 +164,29 @@ export default function AboutPage() {
       <section className="mt-20">
         <p className="label">Recognition</p>
         <div className="mt-6 space-y-8">
-          {achievements.map((a) => (
-            <article key={a.title}>
-              <h3 className="font-medium">
-                {a.title}{" "}
-                <span className="ml-2 font-mono text-[11px] font-normal text-muted">
-                  {a.year}
-                </span>
-              </h3>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                {a.detail}
-              </p>
-            </article>
-          ))}
+          {achievements.map((a) => {
+            const img = achievementImage(a.slug);
+            return (
+              <article key={a.slug} className="flex gap-5">
+                {img && (
+                  <div className="relative aspect-[4/3] w-32 shrink-0 overflow-hidden rounded-md border border-line">
+                    <Image src={img} alt={a.title} fill sizes="128px" className="object-cover" />
+                  </div>
+                )}
+                <div>
+                  <h3 className="font-medium">
+                    {a.title}{" "}
+                    <span className="ml-2 font-mono text-[11px] font-normal text-muted">
+                      {a.year}
+                    </span>
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+                    {a.detail}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>

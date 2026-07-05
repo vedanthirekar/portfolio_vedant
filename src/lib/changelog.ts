@@ -5,7 +5,7 @@ export interface DayGroup {
   commits: Commit[];
 }
 
-/** Drop merge commits — they're pipeline noise, not changes. */
+/** Drop merge commits - they're pipeline noise, not changes. */
 export function isMeaningfulCommit(c: Commit): boolean {
   return !c.message.startsWith("Merge ");
 }

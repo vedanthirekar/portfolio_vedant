@@ -24,22 +24,21 @@ export const experience: Experience[] = [
     start: "2026-01",
     end: "2026-05",
     summary:
-      "Tutored undergraduate students in mathematics — breaking dense concepts into simple, workable steps, one student at a time.",
+      "Tutored undergraduate students in mathematics - breaking dense concepts into simple, workable steps, one student at a time.",
     tagline: "Teaching math, one concept at a time",
     highlights: [
-      "Tutored undergraduates across core mathematics courses, adapting explanations to each student's way of thinking rather than repeating the lecture.",
-      "The same skill this site is built on: taking something complex and making it feel simple.",
+      "Tutored undergraduates across core mathematics courses, adapting explanations to each student's way of thinking."
     ],
     stack: ["Calculus", "Statistics", "Problem Solving"],
   },
   {
     slug: "ai-cybersecurity-research",
     company: "Indiana University",
-    role: "Research Assistant — AI in Cybersecurity",
+    role: "Research Assistant - AI in Cybersecurity",
     start: "2025-06",
     end: "2025-12",
     summary:
-      "Researched multi-agent reinforcement learning for autonomous cyber defense in the CAGE Challenge 4 environment — training and evaluating agents that detect and respond to threats.",
+      "Researched multi-agent reinforcement learning for autonomous cyber defense in the CAGE Challenge 4 environment - training and evaluating agents that detect and respond to threats.",
     tagline: "Multi-agent RL for cyber defense",
     highlights: [
       "Applied, trained, and evaluated RL algorithms from Stable-Baselines3 and RLlib in a multi-agent reinforcement learning (MARL) environment, CAGE Challenge 4.",
@@ -54,7 +53,7 @@ export const experience: Experience[] = [
     start: "2025-06",
     end: "2025-12",
     summary:
-      "Built an artist-management agentic AI system — a personal manager for music artists with retrieval, scheduling, and outreach capabilities on Azure.",
+      "Built an artist-management agentic AI system - a personal manager for music artists with retrieval, scheduling, and outreach capabilities on Azure.",
     tagline: "Agentic AI on Azure OpenAI",
     highlights: [
       "Developed an agentic AI system using Azure OpenAI and LangChain with tool-use capabilities: RAG across 100+ documents, scheduling, and outreach.",
@@ -70,7 +69,7 @@ export const experience: Experience[] = [
     start: "2024-02",
     end: "2024-07",
     summary:
-      "Debugged and resolved production defects in React and TypeScript applications, and automated GUI validation with Jest — improving stability, coverage, and frontend performance.",
+      "Debugged and resolved production defects in React and TypeScript applications, and automated GUI validation with Jest - improving stability, coverage, and frontend performance.",
     tagline: "React/TypeScript debugging & Jest automation",
     highlights: [
       "Debugged and resolved production software defects in React and TypeScript applications, improving reliability and user experience in an Agile environment.",

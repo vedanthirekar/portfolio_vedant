@@ -6,7 +6,7 @@ const links = [
   { href: "/work", label: "work" },
   { href: "/now", label: "now" },
   { href: "/changelog", label: "changelog" },
-  { href: "/roadmap", label: "roadmap" },
+  // { href: "/roadmap", label: "roadmap" }, // hidden for now - page still exists in the codebase
   { href: "/how-this-works", label: "how this works" },
   { href: "/api-docs", label: "api" },
 ];

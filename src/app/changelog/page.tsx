@@ -22,7 +22,7 @@ export default async function ChangelogPage() {
         Every change, <em className="text-muted">on the record.</em>
       </h1>
       <p className="mt-6 max-w-xl leading-relaxed text-muted">
-        This page reads directly from the site&apos;s git history — nothing is
+        This page reads directly from the site&apos;s git history - nothing is
         hand-picked or polished. It&apos;s the simplest proof of consistency I can
         offer: you can see exactly when and how often I ship.
       </p>
@@ -53,7 +53,7 @@ export default async function ChangelogPage() {
       ) : (
         <div className="mt-16 rounded-md bg-panel px-5 py-4 font-mono text-xs text-panel-ink">
           <p>
-            changelog unavailable — this page pulls live from{" "}
+            changelog unavailable - this page pulls live from{" "}
             <a
               href={`https://github.com/${site.repo}`}
               className="underline underline-offset-4 hover:text-white"

@@ -4,7 +4,7 @@ export interface Project {
   oneLiner: string;
   description: string;
   stack: string[];
-  links: { github?: string; live?: string };
+  links: { github?: string; live?: string; linkedIn?: string };
   /** Honest engineering notes: what didn't work, what was traded away, and why. */
   tradeoffs: string[];
   featured: boolean;
@@ -34,6 +34,7 @@ export interface Education {
 }
 
 export interface Achievement {
+  slug: string;
   title: string;
   detail: string;
   year: number;
@@ -43,7 +44,7 @@ export interface NowUpdate {
   date: string; // "YYYY-MM-DD"
   /** One short line for the footer console, e.g. "building this site · learning multi-agent RL" */
   summary: string;
-  entries: { label: string; text: string }[];
+  entries: { label: string; text: string; href?: string }[];
 }
 
 export type RoadmapStatus = "shipped" | "in-progress" | "planned";

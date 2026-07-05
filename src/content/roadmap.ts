@@ -4,7 +4,7 @@ import type { RoadmapItem } from "./types";
 // GitHub-issues-driven roadmap is itself on the roadmap.
 export const roadmap: RoadmapItem[] = [
   {
-    title: "v1 — The observable portfolio",
+    title: "v1 - The observable portfolio",
     detail:
       "Control-room home with a real CI/CD pipeline, live ops panel, changelog, architecture docs, and a public JSON API.",
     status: "in-progress",
@@ -29,7 +29,7 @@ export const roadmap: RoadmapItem[] = [
   {
     title: "Semantic search",
     detail:
-      "Embedding-based search over projects and notes — a lightweight, inspectable retrieval demo.",
+      "Embedding-based search over projects and notes - a lightweight, inspectable retrieval demo.",
     status: "planned",
   },
   {

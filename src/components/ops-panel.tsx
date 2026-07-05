@@ -34,7 +34,7 @@ function shortRepo(repo: string): string {
 }
 
 /**
- * The footer console — the site's system tray. Three rows of live truth:
+ * The footer console - the site's system tray. Three rows of live truth:
  * STATUS (this deployment's pipeline), NOW (what I'm up to, hand-written),
  * ACTIVITY (my public GitHub events). Degrades honestly when data is missing.
  */
@@ -76,7 +76,7 @@ export async function OpsPanel() {
           </span>
         ) : (
           <span className="text-panel-muted">
-            build {buildInfo.sha ?? "local"} · development build — the pipeline goes
+            build {buildInfo.sha ?? "local"} · development build - the pipeline goes
             live with the public repo
           </span>
         )}
@@ -119,7 +119,7 @@ export async function OpsPanel() {
           </span>
         ) : (
           <span className="text-panel-muted">
-            feed unavailable — pulls live from GitHub and recovers on its own
+            feed unavailable - pulls live from GitHub and recovers on its own
           </span>
         )}
       </Row>

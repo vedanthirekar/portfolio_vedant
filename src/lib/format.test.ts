@@ -21,11 +21,11 @@ describe("formatMonth", () => {
 
 describe("formatRange", () => {
   it("formats a closed range", () => {
-    expect(formatRange("2024-02", "2024-07")).toBe("Feb 2024 — Jul 2024");
+    expect(formatRange("2024-02", "2024-07")).toBe("Feb 2024 - Jul 2024");
   });
 
   it("uses Present for an open range", () => {
-    expect(formatRange("2025-06", null)).toBe("Jun 2025 — Present");
+    expect(formatRange("2025-06", null)).toBe("Jun 2025 - Present");
   });
 });
 

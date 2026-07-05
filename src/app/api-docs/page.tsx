@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const endpoints = [
   {
     path: "/api/resume",
-    desc: "The whole resume as structured JSON — experience, education, projects, achievements, links.",
+    desc: "The whole resume as structured JSON - experience, education, projects, achievements, links.",
   },
   {
     path: "/api/projects",
@@ -36,17 +36,14 @@ export default function ApiDocsPage() {
         <p>
           In plain terms: everything on this site is also available as machine-readable
           data, documented like a real product. If you&apos;re building a tool, scraping
-          for a hiring pipeline, or just curious — don&apos;t parse my HTML, use this.
+          for a hiring pipeline, or just curious - don&apos;t parse my HTML, use this.
         </p>
         <p>
           Why does a portfolio need an API? Partly because treating your own
-          data as a product is good engineering practice in miniature — typed
+          data as a product is good engineering practice in miniature - typed
           content, one source of truth, documented contract. And partly because
-          upcoming features on the{" "}
-          <a href="/roadmap" className="link">
-            roadmap
-          </a>{" "}
-          (like the <span className="font-mono text-xs">npx vedant</span> terminal
+          future features (like the{" "}
+          <span className="font-mono text-xs">npx vedant</span> terminal
           resume card) will be real consumers of these endpoints.
         </p>
       </div>
@@ -79,7 +76,7 @@ export default function ApiDocsPage() {
 "Methix"`}</pre>
         </div>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
-          All endpoints are read-only, unauthenticated, and served statically —
+          All endpoints are read-only, unauthenticated, and served statically -
           they&apos;re generated from the same typed content modules that render the
           pages, so the API can never disagree with the site.
         </p>

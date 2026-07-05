@@ -9,27 +9,20 @@ export const nowUpdates: NowUpdate[] = [
     entries: [
       {
         label: "working on",
-        text: "Project 990 — productionizing a multi-stage LLM pipeline on HPC that generates mission statements for 175,000+ nonprofits from IRS filings. Scale, checkpointing, Slurm, the whole thing.",
+        text: "Project 990 - testing and verifying a multi-stage LLM pipeline on HPC that generates mission statements for 175,000+ nonprofits from IRS filings, and exploring GAT models for a grantor-grantee recommender system.",
       },
       {
         label: "building",
-        text: "This site — rebuilding my portfolio as a piece of software that shows its own engineering: live pipeline, public API, changelog and all.",
+        text: "This site - rebuilding my portfolio as a piece of software that shows its own engineering: live pipeline, public API, changelog and all.",
       },
       {
         label: "learning",
-        text: "Multi-agent reinforcement learning, carried over from my cyber-defense research at Indiana University — how agents coordinate (and fail to) fascinates me.",
+        text: "System design - working through how real systems handle scale, failure, and tradeoffs beyond what a single script needs to.",
       },
       {
         label: "practicing",
-        text: "Daily DSA problems — the commit feed below doesn't lie about whether I actually showed up.",
-      },
-      {
-        label: "staying current",
-        text: "AI Twitter (algorithm well-trained by now), plus The Batch and TLDR AI for the weekly signal-over-noise pass.",
-      },
-      {
-        label: "looking forward to",
-        text: "Finishing my M.S. in 2026 and finding a team where I can keep shipping AI systems that real people rely on.",
+        text: "Daily DSA problems - the commit feed below doesn't lie about whether I actually showed up.",
+        href: "https://leetcode.com/u/vedanthirekar/",
       },
     ],
   },

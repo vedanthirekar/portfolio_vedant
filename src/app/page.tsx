@@ -28,9 +28,10 @@ export default function Home() {
             <em className="text-accent">by building them.</em>
           </h1>
           <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-            Currently an AI Engineer at Project 990, shipping LLM pipelines at
-            175k+ scale. M.S. in Data Science at Indiana University —
-            previously at Methix, Parallel Wireless, and Krios Info Solutions.
+            I am always working towards becoming a more reliable person and a problem solver. Currently working as an AI Engineer at Project 990.
+            Recently graduated with a Master of Science in Data Science at Indiana University
+        
+  
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
@@ -58,7 +59,7 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="relative aspect-[4/5] w-full max-w-80 overflow-hidden rounded-[14px] border border-line lg:max-w-none"
+        <div className="relative aspect-[4/5] w-full max-w-72 overflow-hidden rounded-[14px] border border-line lg:max-w-100"
           style={{ background: "linear-gradient(160deg, #dfe5e2, #cfd8d4)" }}
         >
           {photo && (
@@ -100,7 +101,7 @@ export default function Home() {
                       alt={`${p.name} screenshot`}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover"
+                      className="object-contain p-6"
                     />
                   )}
                 </div>
@@ -116,8 +117,13 @@ export default function Home() {
                     </a>
                   )}
                   {p.links.github && (
-                    <a href={p.links.github} className="link" target="_blank" rel="noreferrer">
+                    <a href={p.links.github} className="link mr-4" target="_blank" rel="noreferrer">
                       github ↗
+                    </a>
+                  )}
+                  {p.links.linkedIn && (
+                    <a href={p.links.linkedIn} className="link" target="_blank" rel="noreferrer">
+                      linkedin ↗
                     </a>
                   )}
                 </p>
@@ -143,7 +149,7 @@ export default function Home() {
             >
               <p className="text-[17px] font-semibold">{e.company}</p>
               <p className="text-sm text-muted">
-                {e.role} — {e.tagline}
+                {e.role} - {e.tagline}
               </p>
               <p className="font-mono text-[11px] text-muted sm:text-right">
                 {formatRange(e.start, e.end)}

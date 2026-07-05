@@ -35,7 +35,7 @@ function headers(): HeadersInit {
 function logApiFailure(what: string, res: Response) {
   const remaining = res.headers.get("x-ratelimit-remaining");
   console.warn(
-    `[github] ${what} failed: ${res.status}${remaining === "0" ? " (rate limit exhausted — set GITHUB_TOKEN)" : ""}`,
+    `[github] ${what} failed: ${res.status}${remaining === "0" ? " (rate limit exhausted - set GITHUB_TOKEN)" : ""}`,
   );
 }
 
@@ -79,7 +79,7 @@ export interface ActivityEvent {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/** Pure mapper over GitHub public-events payloads — kept separate for testing. */
+/** Pure mapper over GitHub public-events payloads - kept separate for testing. */
 export function mapGithubEvents(raw: any[]): ActivityEvent[] {
   const events: ActivityEvent[] = [];
   for (const e of raw) {
@@ -88,7 +88,7 @@ export function mapGithubEvents(raw: any[]): ActivityEvent[] {
     if (!repo || !date) continue;
     const url = `https://github.com/${repo}`;
     if (e.type === "PushEvent") {
-      // The public events API serves slim payloads (no commits array) —
+      // The public events API serves slim payloads (no commits array) -
       // fall back to branch @ short-sha when commit messages are absent.
       const commits = Array.isArray(e.payload?.commits) ? e.payload.commits : [];
       const branch = String(e.payload?.ref ?? "").replace("refs/heads/", "");

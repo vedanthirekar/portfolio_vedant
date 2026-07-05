@@ -11,24 +11,24 @@ export const metadata: Metadata = {
 const decisions = [
   {
     decision: "GitHub Actions owns the whole pipeline",
-    why: "Vercel could deploy this site automatically on push, but then the pipeline shown in the ops panel would be someone else's. Actions runs lint, tests, and the build, then pushes the prebuilt output to Vercel — so every claim on this page maps to a workflow file you can read in the repo.",
+    why: "Vercel could deploy this site automatically on push, but then the pipeline shown in the ops panel would be someone else's. Actions runs lint, tests, and the build, then pushes the prebuilt output to Vercel - so every claim on this page maps to a workflow file you can read in the repo.",
   },
   {
     decision: "Content is typed TypeScript, not a CMS",
-    why: "Projects and experience change a few times a year. A CMS adds a database, an admin UI, and an attack surface to solve a problem git already solves. Typed modules mean the content is validated at compile time and every edit is a commit — which feeds the changelog.",
+    why: "Projects and experience change a few times a year. A CMS adds a database, an admin UI, and an attack surface to solve a problem git already solves. Typed modules mean the content is validated at compile time and every edit is a commit - which feeds the changelog.",
   },
   {
     decision: "Build metadata is baked, live status is fetched",
-    why: "The commit hash and test count in the ops panel are written into the build artifact by CI — they describe exactly the deployment you're looking at and can't drift. Only the pipeline status is fetched live from the GitHub API, cached for five minutes.",
+    why: "The commit hash and test count in the ops panel are written into the build artifact by CI - they describe exactly the deployment you're looking at and can't drift. Only the pipeline status is fetched live from the GitHub API, cached for five minutes.",
   },
   {
     decision: "Everything degrades gracefully",
     why: "If the GitHub API is rate-limited or unreachable, the changelog and ops panel say so honestly and the rest of the site is unaffected. No feature here is allowed to break the recruiter path: home, resume, contact.",
   },
-  {
-    decision: "No AI chatbot (yet)",
-    why: "Portfolio chatbots are usually black-box gimmicks. One is on the roadmap, but only as a glass box — showing its retrieved chunks, prompt, and latency. Until it can demonstrate something real about retrieval engineering, it stays unshipped.",
-  },
+  // {
+  //   decision: "No AI chatbot (yet)",
+  //   why: "Portfolio chatbots are usually black-box gimmicks. One is planned, but only as a glass box - showing its retrieved chunks, prompt, and latency. Until it can demonstrate something real about retrieval engineering, it stays unshipped.",
+  // },
 ];
 
 export default function HowThisWorksPage() {
@@ -42,15 +42,18 @@ export default function HowThisWorksPage() {
         <p>
           Here&apos;s the problem with resumes: anyone can write &quot;CI/CD, automated
           testing, documentation, clean architecture&quot; on one. The words are
-          free. So instead of asking you to take my word for it, I built this
-          site to run those practices live, where you can check them.
+          free. So instead of listing practices, I&apos;m using this site to
+          demonstrate them directly - each one running live, where you can
+          check it.
         </p>
         <p>
-          If you&apos;re deciding whether I can build reliable software —
-          don&apos;t trust this page, audit it. The pipeline status in the footer
-          is real. The changelog is my actual git history. The test count was
-          written by CI into the exact deployment you&apos;re reading. This page is
-          the design doc for all of it.
+          This is an ongoing project. Right now the site demonstrates CI/CD,
+          automated testing, and documentation: the pipeline status in the
+          footer is real, the changelog is my actual git history, and the test
+          count was written by CI into the exact deployment you&apos;re reading.
+          More principles and tech will be added over time, each one
+          demonstrated the same way - live, not claimed. This page is the
+          design doc for all of it.
         </p>
       </div>
 
@@ -62,18 +65,28 @@ export default function HowThisWorksPage() {
           this end to end. If any step fails, nothing deploys. The page you are
           reading was produced by it.
         </p>
-        <div className="mt-6 overflow-x-auto rounded-md bg-panel p-5 font-mono text-xs leading-relaxed text-panel-ink">
-          <pre>{`git push origin main
-   │
-   ▼
-┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│   lint   │──▶│   test   │──▶│  build   │──▶│  deploy  │
-│  eslint  │   │  vitest  │   │ next.js  │   │  vercel  │
-└──────────┘   └──────────┘   └──────────┘   └──────────┘
-                    │              │
-                    ▼              ▼
-             test counts and commit metadata are baked
-             into the artifact → shown in the ops panel`}</pre>
+        <div className="mt-6 overflow-x-auto rounded-md bg-panel p-6 font-mono text-xs text-panel-ink">
+          <p>git push origin main</p>
+          <div className="mt-3 flex min-w-max items-stretch gap-3">
+            {[
+              ["lint", "eslint"],
+              ["test", "vitest"],
+              ["build", "next.js"],
+              ["deploy", "vercel"],
+            ].map(([stage, tool], i) => (
+              <div key={stage} className="flex items-center gap-3">
+                {i > 0 && <span aria-hidden className="text-panel-ink/50">→</span>}
+                <div className="rounded border border-panel-ink/30 px-5 py-3 text-center">
+                  <p>{stage}</p>
+                  <p className="mt-1 text-panel-ink/60">{tool}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 max-w-md leading-relaxed text-panel-ink/60">
+            test counts and commit metadata are baked into the artifact →
+            shown in the ops panel
+          </p>
         </div>
       </section>
 
@@ -84,8 +97,8 @@ export default function HowThisWorksPage() {
           {[
             ["Framework", "Next.js (App Router, React Server Components, ISR)"],
             ["Language", "TypeScript, strict"],
-            ["Styling", "Tailwind CSS v4 — design tokens in CSS, no UI kit"],
-            ["Testing", "Vitest — content integrity, formatting, API shapes"],
+            ["Styling", "Tailwind CSS v4 - design tokens in CSS, no UI kit"],
+            ["Testing", "Vitest - content integrity, formatting, API shapes"],
             ["CI/CD", "GitHub Actions → Vercel (prebuilt deploys)"],
             ["Data", "Typed TS content modules + GitHub REST API"],
           ].map(([k, v]) => (
@@ -113,7 +126,7 @@ export default function HowThisWorksPage() {
       {/* Source */}
       <section className="mt-20 rounded-md border border-line p-6">
         <p className="text-sm leading-relaxed text-muted">
-          Don&apos;t take this page&apos;s word for any of it — the source is public at{" "}
+          Don&apos;t take this page&apos;s word for any of it - the source is public at{" "}
           <a
             href={`https://github.com/${site.repo}`}
             className="link"

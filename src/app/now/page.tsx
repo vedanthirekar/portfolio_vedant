@@ -5,7 +5,7 @@ import { formatDay, timeAgo } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Now",
-  description: "What I'm building, learning, and looking forward to — right now.",
+  description: "What I'm building, learning, and looking forward to - right now.",
 };
 
 export const revalidate = 900;
@@ -21,7 +21,7 @@ export default async function NowPage() {
         What&apos;s up with me, <em className="text-muted">right now.</em>
       </h1>
       <p className="mt-6 max-w-xl leading-relaxed text-muted">
-        A dated log of what I&apos;m building, learning, and looking forward to —
+        A dated log of what I&apos;m building, learning, and looking forward to -
         written by me, in my own words. Below it, my live GitHub activity,
         which keeps this page honest whether or not I remember to write.
       </p>
@@ -33,7 +33,17 @@ export default async function NowPage() {
           {latest.entries.map((e) => (
             <div key={e.label} className="grid gap-2 sm:grid-cols-[1fr_2fr] sm:gap-8">
               <p className="label pt-1">{e.label}</p>
-              <p className="max-w-xl leading-relaxed">{e.text}</p>
+              <p className="max-w-xl leading-relaxed">
+                {e.text}
+                {e.href && (
+                  <>
+                    {" "}
+                    <a href={e.href} className="link" target="_blank" rel="noreferrer">
+                      view ↗
+                    </a>
+                  </>
+                )}
+              </p>
             </div>
           ))}
         </div>
@@ -44,7 +54,7 @@ export default async function NowPage() {
         <div className="rounded-lg bg-panel p-5">
           <div className="flex items-baseline justify-between">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-panel-muted">
-              Recent activity — live from GitHub
+              Recent activity - live from GitHub
             </p>
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-ok opacity-40" />
@@ -75,13 +85,13 @@ export default async function NowPage() {
             </ul>
           ) : (
             <p className="mt-5 font-mono text-xs text-panel-muted">
-              activity feed unavailable — this pulls live from the GitHub API
+              activity feed unavailable - this pulls live from the GitHub API
               and recovers on its own.
             </p>
           )}
         </div>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
-          This feed is my actual public GitHub activity across all repos — DSA
+          This feed is my actual public GitHub activity across all repos - DSA
           practice, coursework, this site. It updates itself, so &quot;consistency&quot;
           here isn&apos;t a claim, it&apos;s a timestamp.
         </p>
@@ -99,7 +109,17 @@ export default async function NowPage() {
                   {u.entries.map((e) => (
                     <div key={e.label} className="grid gap-1 sm:grid-cols-[1fr_2fr] sm:gap-8">
                       <p className="label">{e.label}</p>
-                      <p className="max-w-xl text-sm leading-relaxed text-muted">{e.text}</p>
+                      <p className="max-w-xl text-sm leading-relaxed text-muted">
+                        {e.text}
+                        {e.href && (
+                          <>
+                            {" "}
+                            <a href={e.href} className="link" target="_blank" rel="noreferrer">
+                              view ↗
+                            </a>
+                          </>
+                        )}
+                      </p>
                     </div>
                   ))}
                 </div>

@@ -10,9 +10,9 @@ export function formatMonth(ym: string): string {
   return `${MONTHS[m - 1]} ${y}`;
 }
 
-/** ("2025-06", null) → "Jun 2025 — Present" */
+/** ("2025-06", null) → "Jun 2025 - Present" */
 export function formatRange(start: string, end: string | null): string {
-  return `${formatMonth(start)} — ${end ? formatMonth(end) : "Present"}`;
+  return `${formatMonth(start)} - ${end ? formatMonth(end) : "Present"}`;
 }
 
 /** ISO timestamp → "3h ago" style relative time. */

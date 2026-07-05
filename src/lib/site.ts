@@ -1,12 +1,12 @@
 export const site = {
   name: "Vedant Hirekar",
   tagline:
-    "I learn how software and AI systems work by building them — focusing on fundamentals, simplicity and real-world use.",
+    "I learn how software and AI systems work by building them - focusing on fundamentals, simplicity and real-world use.",
   role: "AI & Software Engineer",
-  location: "Bloomington, Indiana",
+  location: "United States",
   email: "hirekarvedant@gmail.com",
   resumeUrl:
-    "https://drive.google.com/file/d/1VwShsSPygAX95dKRd0_J2OuiTmkjpEGJ/view?usp=sharing",
+    "https://drive.google.com/file/d/1a2mlnk0AoPdrX5QFqKxZ4FUxSjizVMPq/view?usp=sharing",
   social: {
     github: "https://github.com/vedanthirekar",
     linkedin: "https://www.linkedin.com/in/vedanthirekar",

@@ -21,7 +21,7 @@ const sections: { status: RoadmapStatus; label: string; blurb: string }[] = [
   {
     status: "shipped",
     label: "Shipped",
-    blurb: "Live — each one has entries in the changelog.",
+    blurb: "Live - each one has entries in the changelog.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function RoadmapPage() {
       </h1>
       <p className="mt-6 max-w-xl leading-relaxed text-muted">
         I treat this portfolio as an ongoing engineering project, not a
-        brochure. Everything below is a real commitment — when an item ships,
+        brochure. Everything below is a real commitment - when an item ships,
         it moves down the page and shows up in the changelog.
       </p>
 
