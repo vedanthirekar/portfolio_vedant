@@ -1,0 +1,23 @@
+# Vedant Hirekar - AI & Software Engineer
+
+Portfolio of Vedant Hirekar. The site treats its own data as a product:
+everything shown in HTML is also served as documented, machine-readable JSON.
+Don't scrape the pages - use the API.
+
+## API (read-only, no auth)
+
+- https://vedanthirekar.com/api/resume: full resume as JSON - experience, education, projects, achievements, links
+- https://vedanthirekar.com/api/projects: projects with stack, links, and engineering tradeoff notes
+- https://vedanthirekar.com/api/experience: work history
+- https://vedanthirekar.com/api/meta: build metadata for the current deployment (commit, test counts)
+
+## Docs
+
+- https://vedanthirekar.com/api-docs: human-readable API documentation
+- https://vedanthirekar.com/how-this-works: architecture and CI/CD design of the site itself
+
+## Contact
+
+- Email: hirekarvedant@gmail.com
+- GitHub: https://github.com/vedanthirekar
+- LinkedIn: https://www.linkedin.com/in/vedanthirekar
