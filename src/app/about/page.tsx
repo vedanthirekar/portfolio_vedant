@@ -55,19 +55,26 @@ export default function AboutPage() {
       <div className="mt-10 max-w-2xl space-y-5 leading-relaxed text-muted">
         <p>
           I&apos;m someone with an open mind, always learning and driven by curiosity
-          about how complex things break down into simple, manageable parts. I have always try to put myself in situations where I had to solve some kind of problem, like hackathons or improving upon some inefficiency. 
-          </p>
-          <p>
+          about how complex things break down into simple, manageable parts. I
+          have always tried to put myself in situations where I had to solve
+          some kind of problem, like hackathons or improving upon some
+          inefficiency.
+        </p>
+        <p>
           My experience spans software fundamentals to ML, generative AI,
           computer vision, analytics, data engineering, and visualization -
-          learned through internships, coursework, and building things. This exposure to a wide range of areas has helped me develop a holistic understanding of how different components of a system interact and how to optimize them for better performance and efficiency. 
+          learned through internships, coursework, and building things. This
+          exposure to a wide range of areas has helped me develop a holistic
+          understanding of how different components of a system interact and
+          how to optimize them for better performance and efficiency.
         </p>
         <p className="text-ink">
-          Apart from my experinces and projects, the{" "}
+          Apart from my experiences and projects, the{" "}
           <Link href="/changelog" className="link">
             changelog
           </Link>{" "}
-          shows how consistently I ship or try to work on learning/builing something. The{" "}
+          shows how consistently I ship or try to work on learning/building
+          something. The{" "}
           <Link href="/work" className="link">
             honest notes on every project
           </Link>{" "}

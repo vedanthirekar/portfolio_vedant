@@ -16,9 +16,8 @@ export default function WorkPage() {
         Projects, <em className="text-muted">tradeoffs included.</em>
       </h1>
       <p className="mt-6 max-w-xl leading-relaxed text-muted">
-        Every project below lists what was traded away and what didn&apos;t work -
-        because real engineering is choosing constraints, and pretending
-        otherwise helps no one.
+        Every project below lists some of the major decisions, what was traded away and what didn&apos;t work -
+      
       </p>
 
       <div className="mt-16 divide-y divide-line border-y border-line">
@@ -64,7 +63,7 @@ export default function WorkPage() {
               <p className="font-medium">{p.oneLiner}</p>
               <p className="mt-3 leading-relaxed text-muted">{p.description}</p>
               <div className="mt-6 rounded-md border border-line bg-surface p-4">
-                <p className="label mb-3">Honest notes - what was traded away</p>
+                <p className="label mb-3">Notes</p>
                 <ul className="space-y-2 text-sm leading-relaxed text-muted">
                   {p.tradeoffs.map((t) => (
                     <li key={t} className="flex gap-2">

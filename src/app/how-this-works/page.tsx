@@ -40,11 +40,8 @@ export default function HowThisWorksPage() {
       </h1>
       <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-muted">
         <p>
-          Here&apos;s the problem with resumes: anyone can write &quot;CI/CD, automated
-          testing, documentation, clean architecture&quot; on one. The words are
-          free. So instead of listing practices, I&apos;m using this site to
-          demonstrate them directly - each one running live, where you can
-          check it.
+          Instead of just listing practices/ technologies/ skills on a resume or portfolio, I&apos;m using this site to
+          demonstrate them directly by implementing them.
         </p>
         <p>
           This is an ongoing project. Right now the site demonstrates CI/CD,
@@ -113,11 +110,13 @@ export default function HowThisWorksPage() {
       {/* Decisions */}
       <section className="mt-20">
         <p className="label">Decisions &amp; tradeoffs</p>
-        <div className="mt-6 space-y-10">
+        <div className="mt-6 space-y-6">
           {decisions.map((d) => (
             <article key={d.decision} className="grid gap-2 sm:grid-cols-[1fr_2fr] sm:gap-8">
-              <h3 className="font-medium leading-snug">{d.decision}</h3>
-              <p className="text-sm leading-relaxed text-muted">{d.why}</p>
+              <h3 className="font-medium leading-snug sm:pt-4">{d.decision}</h3>
+              <p className="rounded-md border border-line bg-surface p-4 text-sm leading-relaxed text-muted">
+                {d.why}
+              </p>
             </article>
           ))}
         </div>

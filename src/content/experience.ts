@@ -25,7 +25,6 @@ export const experience: Experience[] = [
     end: "2026-05",
     summary:
       "Tutored undergraduate students in mathematics - breaking dense concepts into simple, workable steps, one student at a time.",
-    tagline: "Teaching math, one concept at a time",
     highlights: [
       "Tutored undergraduates across core mathematics courses, adapting explanations to each student's way of thinking."
     ],

@@ -18,7 +18,7 @@ export interface Experience {
   end: string | null; // null = present
   summary: string;
   /** Short role descriptor for compact rows, e.g. "RAG pipelines on Azure OpenAI" */
-  tagline: string;
+  tagline?: string;
   highlights: string[];
   stack: string[];
 }
