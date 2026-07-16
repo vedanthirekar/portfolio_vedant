@@ -6,7 +6,7 @@ export const site = {
   location: "United States",
   email: "hirekarvedant@gmail.com",
   resumeUrl:
-    "https://drive.google.com/file/d/1a2mlnk0AoPdrX5QFqKxZ4FUxSjizVMPq/view?usp=sharing",
+    "https://drive.google.com/file/d/1XkRM1RZVXhkPrnCbCCGE4r-8qs-4eTvN/view?usp=sharing",
   social: {
     github: "https://github.com/vedanthirekar",
     linkedin: "https://www.linkedin.com/in/vedanthirekar",
