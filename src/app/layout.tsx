@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
@@ -46,6 +47,9 @@ export default function RootLayout({
         <main className="mx-auto w-full max-w-[1360px] flex-1 px-6 sm:px-12">{children}</main>
         <Footer />
         <Analytics />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
