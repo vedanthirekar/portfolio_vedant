@@ -28,7 +28,7 @@ export default function WorkPage() {
         {experience.map((e) => (
           <article key={e.slug} className="grid gap-6 py-12 lg:grid-cols-[1fr_2fr] lg:gap-12">
             <div>
-              <h2 className="text-[17px] font-semibold tracking-tight">{e.company}</h2>
+              <h2 className="font-serif text-2xl tracking-tight">{e.company}</h2>
               <p className="mt-3 font-mono text-[11px] text-muted">
                 {formatRange(e.start, e.end)}
               </p>

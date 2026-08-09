@@ -31,7 +31,7 @@ export default function ProjectsPage() {
           return (
           <article key={p.slug} className="grid gap-6 py-12 lg:grid-cols-[1fr_2fr] lg:gap-12">
             <div>
-              <h2 className="font-serif text-3xl tracking-tight">{p.name}</h2>
+              <h2 className="font-serif text-2xl tracking-tight">{p.name}</h2>
               {img && (
                 <div className="relative mt-4 aspect-video overflow-hidden rounded-md border border-line bg-surface">
                   <Image
