@@ -6,7 +6,7 @@
   --paper: #ece7e1;
   --surface: #f5f2ee;
   --ink: #26241f;
-  --muted: #6e6961;
+  --muted: #656058;
   --line: #d5dad6;
   --sage: #8aa2a0;
   --accent: #5f7975; /* deep sage - the only mist tone dark enough for text */
@@ -52,7 +52,7 @@ body {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  text-decoration-color: var(--line);
+  text-decoration-color: var(--sage);
   transition: text-decoration-color 120ms ease, color 120ms ease;
 }
 

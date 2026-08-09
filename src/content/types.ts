@@ -16,7 +16,10 @@ export interface Experience {
   role: string;
   start: string; // "YYYY-MM"
   end: string | null; // null = present
-  summary: string;
+  /** Optional context: the problem behind the work, or what an unfamiliar name
+      means. Only where the highlights don't stand on their own - omit it
+      rather than restate them. */
+  summary?: string;
   /** Short role descriptor for compact rows, e.g. "RAG pipelines on Azure OpenAI" */
   tagline?: string;
   highlights: string[];

@@ -13,7 +13,7 @@ const endpoints = [
   },
   {
     path: "/api/projects",
-    desc: "All projects, including the honest tradeoff notes shown on /work.",
+    desc: "All projects, including the honest tradeoff notes shown on /work/projects.",
   },
   {
     path: "/api/experience",

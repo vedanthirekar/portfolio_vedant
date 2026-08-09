@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-// NOTE: `tradeoffs` entries are honest engineering notes shown publicly on /work.
+// NOTE: `tradeoffs` entries are honest engineering notes shown publicly on /work/projects.
 // Drafted from project context - review and edit so every line is true.
 export const projects: Project[] = [
   {
