@@ -11,6 +11,14 @@ Don't scrape the pages - use the API.
 - https://vedanthirekar.com/api/experience: work history
 - https://vedanthirekar.com/api/meta: build metadata for the current deployment (commit, test counts)
 
+## Pages
+
+- https://vedanthirekar.com/work: work history - roles, what each one involved, and the stack behind it
+- https://vedanthirekar.com/work/projects: projects, each with the decisions and tradeoffs behind it
+- https://vedanthirekar.com/about: background, technical focus areas, education, recognition
+- https://vedanthirekar.com/now: what I'm working on at the moment
+- https://vedanthirekar.com/changelog: commit history of this site, generated from git
+
 ## Docs
 
 - https://vedanthirekar.com/api-docs: human-readable API documentation

@@ -73,7 +73,7 @@ export default function ApiDocsPage() {
         <p className="label mb-4">Try it</p>
         <div className="overflow-x-auto rounded-md bg-panel p-5 font-mono text-xs leading-relaxed text-panel-ink">
           <pre>{`curl ${site.url}/api/resume | jq '.experience[0].company'
-"Methix"`}</pre>
+"Project 990"`}</pre>
         </div>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
           All endpoints are read-only, unauthenticated, and served statically -
