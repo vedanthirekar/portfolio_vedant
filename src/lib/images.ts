@@ -25,9 +25,14 @@ export function projectImage(slug: string): string | null {
   return publicImageAnyExt(join("images", "projects"), slug);
 }
 
-/** Portrait for /about and the home photo card: public/images/vedant1.png */
+/** Portrait for the home photo card: public/images/vedant1.(png|jpg|jpeg) */
+export function homePhoto(): string | null {
+  return publicImageAnyExt("images", "vedant1");
+}
+
+/** Portrait for /about: public/images/vedant3.(png|jpg|jpeg) */
 export function aboutPhoto(): string | null {
-  return publicImage(join("images", "vedant1.png"));
+  return publicImageAnyExt("images", "vedant3");
 }
 
 /** Photo for a recognition on /about: public/images/achievements/<slug>.(png|jpg|jpeg) */

@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 import { featuredProjects } from "@/content/projects";
 import { experience } from "@/content/experience";
 import { formatRange } from "@/lib/format";
-import { projectImage, aboutPhoto } from "@/lib/images";
+import { projectImage, homePhoto } from "@/lib/images";
 
 const thumbTints = [
   "linear-gradient(150deg, #b8c3bd, #8aa2a0)",
@@ -13,40 +13,37 @@ const thumbTints = [
 ];
 
 export default function Home() {
-  const photo = aboutPhoto();
+  const photo = homePhoto();
 
   return (
     <div>
       {/* Hero */}
-      <section className="grid items-center gap-10 py-16 lg:grid-cols-[1.6fr_1fr] lg:gap-20 lg:py-24">
+      <section className="grid items-center gap-10 py-16 sm:px-6 lg:grid-cols-[1fr_320px] lg:gap-20 lg:px-12 lg:py-24">
         <div>
-          <p className="label mb-6">
+          <p className="mb-6 font-mono text-[13px] uppercase tracking-[0.14em] text-muted">
             {site.role} · {site.location}
           </p>
-          <h1 className="max-w-3xl font-serif text-5xl leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
-            I learn how software and AI systems work{" "}
-            <em className="text-accent">by building them.</em>
+          <h1 className="max-w-3xl font-serif text-4xl leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
+            I like understanding systems from the inside out -{" "}
+            <em className="text-accent">usually by building them.</em>
           </h1>
-          <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-            I am always working towards becoming a more reliable person and a problem solver. Currently working as an AI Engineer at Project 990.
-            Recently graduated with a Master of Science in Data Science at Indiana University
-        
-  
+          <p className="mt-7 max-w-3xl text-lg leading-relaxed text-muted">
+            M.S. in Data Science, Indiana University · AI Engineer @ Project 990
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
+            <Link
+              href="/work"
+              className="rounded-full bg-ink px-7 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-85"
+            >
+              View my work
+            </Link>
             <a
               href={site.resumeUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-ink px-7 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-85"
-            >
-              Resume
-            </a>
-            <a
-              href={`mailto:${site.email}`}
               className="rounded-full border border-sage px-7 py-3 text-sm font-medium transition-colors hover:bg-sage hover:text-white"
             >
-              Get in touch
+              Resume
             </a>
             <a
               href={site.social.github}
@@ -72,7 +69,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="relative aspect-[4/5] w-full max-w-72 overflow-hidden rounded-[14px] border border-line lg:max-w-100"
+        <div className="relative aspect-[4/5] w-full max-w-72 overflow-hidden rounded-[14px] border border-line lg:max-w-80 lg:justify-self-end"
           style={{ background: "linear-gradient(160deg, #dfe5e2, #cfd8d4)" }}
         >
           {photo && (
@@ -80,7 +77,7 @@ export default function Home() {
               src={photo}
               alt={site.name}
               fill
-              sizes="(min-width: 1024px) 33vw, 320px"
+              sizes="320px"
               className="object-cover"
               priority
             />
@@ -92,7 +89,7 @@ export default function Home() {
       <section className="border-t border-line py-16 lg:py-20">
         <div className="flex items-baseline justify-between">
           <p className="label">Selected work</p>
-          <Link href="/work" className="font-mono text-xs text-accent hover:text-ink">
+          <Link href="/work/projects" className="font-mono text-xs text-accent hover:text-ink">
             all projects →
           </Link>
         </div>
@@ -150,7 +147,7 @@ export default function Home() {
       <section className="border-t border-line py-16 lg:py-20">
         <div className="flex items-baseline justify-between">
           <p className="label">Experience</p>
-          <Link href="/about" className="font-mono text-xs text-accent hover:text-ink">
+          <Link href="/work" className="font-mono text-xs text-accent hover:text-ink">
             full history →
           </Link>
         </div>

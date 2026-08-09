@@ -1,0 +1,88 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { projects } from "@/content/projects";
+import { projectImage } from "@/lib/images";
+import { WorkTabs } from "@/components/work-tabs";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Projects - with the tradeoffs and honest notes included.",
+};
+
+export default function ProjectsPage() {
+  return (
+    <div className="py-16 sm:py-24">
+      <p className="label mb-6">Work</p>
+      <h1 className="max-w-2xl font-serif text-4xl tracking-tight sm:text-5xl">
+        Projects <em className="text-muted">and tradeoffs</em>
+      </h1>
+      <p className="mt-6 max-w-xl leading-relaxed text-muted">
+        Every project below lists some of the major decisions and tradeoffs I made, and the stack behind it.
+
+      </p>
+
+      <div className="mt-8">
+        <WorkTabs active="/work/projects" />
+      </div>
+
+      <div className="mt-12 divide-y divide-line border-y border-line">
+        {projects.map((p) => {
+          const img = projectImage(p.slug);
+          return (
+          <article key={p.slug} className="grid gap-6 py-12 lg:grid-cols-[1fr_2fr] lg:gap-12">
+            <div>
+              <h2 className="font-serif text-3xl tracking-tight">{p.name}</h2>
+              {img && (
+                <div className="relative mt-4 aspect-video overflow-hidden rounded-md border border-line bg-surface">
+                  <Image
+                    src={img}
+                    alt={`${p.name} screenshot`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-contain p-4"
+                  />
+                </div>
+              )}
+              <p className="mt-3 font-mono text-[11px] text-muted">
+                {p.stack.join(" · ")}
+              </p>
+              <p className="mt-4 font-mono text-xs">
+                {p.links.live && (
+                  <a href={p.links.live} className="link mr-4" target="_blank" rel="noreferrer">
+                    live ↗
+                  </a>
+                )}
+                {p.links.github && (
+                  <a href={p.links.github} className="link mr-4" target="_blank" rel="noreferrer">
+                    github ↗
+                  </a>
+                )}
+                {p.links.linkedIn && (
+                  <a href={p.links.linkedIn} className="link" target="_blank" rel="noreferrer">
+                    linkedin ↗
+                  </a>
+                )}
+              </p>
+            </div>
+            <div>
+              <p className="font-medium">{p.oneLiner}</p>
+              <p className="mt-3 leading-relaxed text-muted">{p.description}</p>
+              <div className="mt-6 rounded-md border border-line bg-surface p-4">
+                <p className="label mb-3">Notes</p>
+                <ul className="space-y-2 text-sm leading-relaxed text-muted">
+                  {p.tradeoffs.map((t) => (
+                    <li key={t} className="flex gap-2">
+                      <span aria-hidden className="select-none font-mono text-muted/60">·</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

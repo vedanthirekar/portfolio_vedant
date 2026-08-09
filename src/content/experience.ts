@@ -8,7 +8,7 @@ export const experience: Experience[] = [
     start: "2026-01",
     end: null,
     summary:
-      "Designing and productionizing a multi-stage LLM pipeline on HPC that generates mission statements for 175,000+ nonprofits from IRS Form 990-EZ data, powering downstream analytics and grantor–grantee matching.",
+      "Project 990 is a nonprofit working in philanthropy, where the problem was classifying organizations by their purpose. With no reliable mission text to classify from, generating it had to come first - and the same output feeds downstream analytics.",
     tagline: "LLM pipelines on HPC, at 175k+ scale",
     highlights: [
       "Designed and deployed a 3-stage LLM pipeline on HPC using Mistral-7B for generation and Gemma-7B for evaluation across 175,000+ nonprofits.",
@@ -23,8 +23,6 @@ export const experience: Experience[] = [
     role: "Mathematics Tutor",
     start: "2026-01",
     end: "2026-05",
-    summary:
-      "Tutored undergraduate students in mathematics - breaking dense concepts into simple, workable steps, one student at a time.",
     highlights: [
       "Tutored undergraduates across core mathematics courses, adapting explanations to each student's way of thinking."
     ],
@@ -37,7 +35,7 @@ export const experience: Experience[] = [
     start: "2025-06",
     end: "2025-12",
     summary:
-      "Researched multi-agent reinforcement learning for autonomous cyber defense in the CAGE Challenge 4 environment - training and evaluating agents that detect and respond to threats.",
+      "Research into how reinforcement learning agents hold up in CAGE Challenge 4 - a simulated environment for autonomous cyber defense, where agents detect and respond to intrusions across a network without a human in the loop.",
     tagline: "Multi-agent RL for cyber defense",
     highlights: [
       "Applied, trained, and evaluated RL algorithms from Stable-Baselines3 and RLlib in a multi-agent reinforcement learning (MARL) environment, CAGE Challenge 4.",
@@ -52,7 +50,7 @@ export const experience: Experience[] = [
     start: "2025-06",
     end: "2025-12",
     summary:
-      "Built an artist-management agentic AI system - a personal manager for music artists with retrieval, scheduling, and outreach capabilities on Azure.",
+      "Methix is a platform that helps independent music artists navigate the industry. I worked on its AI features.",
     tagline: "Agentic AI on Azure OpenAI",
     highlights: [
       "Developed an agentic AI system using Azure OpenAI and LangChain with tool-use capabilities: RAG across 100+ documents, scheduling, and outreach.",
@@ -67,8 +65,6 @@ export const experience: Experience[] = [
     role: "Software Engineering Intern",
     start: "2024-02",
     end: "2024-07",
-    summary:
-      "Debugged and resolved production defects in React and TypeScript applications, and automated GUI validation with Jest - improving stability, coverage, and frontend performance.",
     tagline: "React/TypeScript debugging & Jest automation",
     highlights: [
       "Debugged and resolved production software defects in React and TypeScript applications, improving reliability and user experience in an Agile environment.",
@@ -82,8 +78,6 @@ export const experience: Experience[] = [
     role: "Data Science Intern",
     start: "2023-02",
     end: "2023-05",
-    summary:
-      "Built a retail demand-forecasting system over 5+ years of daily sales data for 300+ SKUs, with Power BI dashboards that turned forecasts into stakeholder decisions.",
     tagline: "Sales forecasting & Power BI dashboards",
     highlights: [
       "Cleaned and transformed 5+ years of daily sales data for 300+ SKUs using Python and Pandas into a model-ready dataset for demand forecasting.",

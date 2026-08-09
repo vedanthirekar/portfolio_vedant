@@ -1,7 +1,7 @@
 export const site = {
   name: "Vedant Hirekar",
   tagline:
-    "I learn how software and AI systems work by building them - focusing on fundamentals, simplicity and real-world use.",
+    "I like understanding systems from the inside out - usually by building them. AI & Software Engineer, currently at Project 990.",
   role: "AI & Software Engineer",
   location: "United States",
   email: "hirekarvedant@gmail.com",
