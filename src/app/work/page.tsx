@@ -26,19 +26,20 @@ export default function WorkPage() {
 
       <div className="mt-12 divide-y divide-line border-y border-line">
         {experience.map((e) => (
-          <article key={e.slug} className="grid gap-3 py-8 sm:grid-cols-[1fr_2fr] sm:gap-8">
+          <article key={e.slug} className="grid gap-6 py-12 lg:grid-cols-[1fr_2fr] lg:gap-12">
             <div>
-              <h2 className="font-medium tracking-tight">{e.company}</h2>
-              <p className="mt-1 font-mono text-[11px] text-muted">
+              <h2 className="text-[17px] font-semibold tracking-tight">{e.company}</h2>
+              <p className="mt-3 font-mono text-[11px] text-muted">
                 {formatRange(e.start, e.end)}
               </p>
+              <p className="mt-3 font-mono text-[11px] text-muted">{e.stack.join(" · ")}</p>
             </div>
             <div>
-              <p className="text-sm font-medium">{e.role}</p>
+              <p className="font-medium">{e.role}</p>
               {e.summary && (
-                <p className="mt-2 text-sm leading-relaxed text-muted">{e.summary}</p>
+                <p className="mt-3 leading-relaxed text-muted">{e.summary}</p>
               )}
-              <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-muted">
+              <ul className="mt-6 space-y-2 text-sm leading-relaxed text-muted">
                 {e.highlights.map((h) => (
                   <li key={h} className="flex gap-2">
                     <span aria-hidden className="select-none font-mono text-muted/60">·</span>
@@ -46,7 +47,6 @@ export default function WorkPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 font-mono text-[11px] text-muted">{e.stack.join(" · ")}</p>
             </div>
           </article>
         ))}
