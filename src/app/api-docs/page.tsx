@@ -70,7 +70,7 @@ export default function ApiDocsPage() {
       </div>
 
       <section className="mt-16">
-        <p className="label mb-4">Try it</p>
+        <h2 className="label mb-4">Try it</h2>
         <div className="overflow-x-auto rounded-md bg-panel p-5 font-mono text-xs leading-relaxed text-panel-ink">
           <pre>{`curl ${site.url}/api/resume | jq '.experience[0].company'
 "Project 990"`}</pre>

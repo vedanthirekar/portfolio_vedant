@@ -56,7 +56,7 @@ export default function HowThisWorksPage() {
 
       {/* Pipeline */}
       <section className="mt-20">
-        <p className="label">The pipeline</p>
+        <h2 className="label">The pipeline</h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
           Every push to <span className="font-mono text-xs">main</span> runs
           this end to end. If any step fails, nothing deploys. The page you are
@@ -89,7 +89,7 @@ export default function HowThisWorksPage() {
 
       {/* Stack */}
       <section className="mt-20">
-        <p className="label">Stack</p>
+        <h2 className="label">Stack</h2>
         <div className="mt-6 divide-y divide-line border-y border-line text-sm">
           {[
             ["Framework", "Next.js (App Router, React Server Components, ISR)"],
@@ -109,7 +109,7 @@ export default function HowThisWorksPage() {
 
       {/* Decisions */}
       <section className="mt-20">
-        <p className="label">Decisions &amp; tradeoffs</p>
+        <h2 className="label">Decisions &amp; tradeoffs</h2>
         <div className="mt-6 space-y-6">
           {decisions.map((d) => (
             <article key={d.decision} className="grid gap-2 sm:grid-cols-[1fr_2fr] sm:gap-8">

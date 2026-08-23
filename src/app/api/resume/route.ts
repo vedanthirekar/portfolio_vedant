@@ -3,6 +3,7 @@ import { projects } from "@/content/projects";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
 import { achievements } from "@/content/achievements";
+import { methodNotAllowed } from "@/lib/api";
 
 export const dynamic = "force-static";
 
@@ -19,3 +20,8 @@ export function GET() {
     achievements,
   });
 }
+
+export const POST = methodNotAllowed;
+export const PUT = methodNotAllowed;
+export const PATCH = methodNotAllowed;
+export const DELETE = methodNotAllowed;

@@ -101,7 +101,7 @@ export default function AboutPage() {
 
       {/* Technical forte */}
       <section className="mt-20">
-        <p className="label">Technical forte</p>
+        <h2 className="label">Technical forte</h2>
         <div className="mt-6 divide-y divide-line border-y border-line">
           {forte.map((f) => (
             <div
@@ -119,7 +119,7 @@ export default function AboutPage() {
 
       {/* Education */}
       <section className="mt-20">
-        <p className="label">Education</p>
+        <h2 className="label">Education</h2>
         <div className="mt-6 divide-y divide-line border-y border-line">
           {education.map((e) => (
             <article
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
       {/* Recognition */}
       <section className="mt-20">
-        <p className="label">Recognition</p>
+        <h2 className="label">Recognition</h2>
         <div className="mt-6 space-y-8">
           {achievements.map((a) => {
             const img = achievementImage(a.slug);

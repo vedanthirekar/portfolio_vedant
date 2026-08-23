@@ -22,7 +22,16 @@ Don't scrape the pages - use the API.
 ## Docs
 
 - https://vedanthirekar.com/api-docs: human-readable API documentation
+- https://vedanthirekar.com/openapi.json: OpenAPI 3.1 specification for the API above
 - https://vedanthirekar.com/how-this-works: architecture and CI/CD design of the site itself
+
+## For agents
+
+- Send `Accept: text/markdown` to any page above and get a markdown rendition
+  back instead of HTML (Vary: Accept).
+- Unknown paths return a real HTTP 404 with links back to this file and the
+  sitemap. Unknown or unsupported requests under /api return a JSON 404/405,
+  never an HTML error page.
 
 ## Contact
 

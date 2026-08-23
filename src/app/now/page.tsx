@@ -100,7 +100,7 @@ export default async function NowPage() {
       {/* Archive */}
       {archive.length > 0 && (
         <section className="mt-20">
-          <p className="label">Earlier</p>
+          <h2 className="label">Earlier</h2>
           <div className="mt-6 space-y-12">
             {archive.map((u) => (
               <article key={u.date}>

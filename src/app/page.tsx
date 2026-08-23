@@ -88,7 +88,7 @@ export default function Home() {
       {/* Selected work */}
       <section className="border-t border-line py-16 lg:py-20">
         <div className="flex items-baseline justify-between">
-          <p className="label">Selected work</p>
+          <h2 className="label">Selected work</h2>
           <Link href="/work/projects" className="font-mono text-xs text-accent hover:text-ink">
             all projects →
           </Link>
@@ -146,7 +146,7 @@ export default function Home() {
       {/* Experience */}
       <section className="border-t border-line py-16 lg:py-20">
         <div className="flex items-baseline justify-between">
-          <p className="label">Experience</p>
+          <h2 className="label">Experience</h2>
           <Link href="/work" className="font-mono text-xs text-accent hover:text-ink">
             full history →
           </Link>
